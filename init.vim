@@ -5,6 +5,7 @@ set number
 map <C-n> :NERDTreeToggle<CR>
 nnoremap <C-p> :Files<CR>
 
+
 " Easier tab switching
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
