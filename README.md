@@ -20,3 +20,9 @@ nvim
 ```
 :PlugInstall
 ```
+
+3. CoC
+Install Languages 
+```
+:CocInstall coc-pyright
+```
