@@ -60,7 +60,7 @@ nnoremap <C-H> <C-W><C-H>
 " --- Plugins ---
 call plug#begin()
 
-Plug 'sonph/onehalf', {'rtp': 'vim/'} 
+Plug 'joshdick/onedark.vim'
 
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -73,7 +73,10 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
-colorscheme onehalfdark
+" --- Color Schemes ---
+"colorscheme onehalfdark
+syntax on
+colorscheme onedark
 
 " --- Settings ---
 
