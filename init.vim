@@ -2,6 +2,11 @@
 set number
 set pyxversion=3
 let g:onedark_termcolors=256
+let g:rainbow_active=1
+let g:rainbow_conf= {
+  \ 'guifgs': ['#F8FF00','#FF64EC','#84FE77','#77FEF7'],
+  \ 'ctermfgs': ['lightyellow','lightblue','lightcyan','lightmagenta'],
+  \ }
 
 " --- Mappings ---
 map <C-n> :NERDTreeToggle<CR>
@@ -72,6 +77,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'editorconfig/editorconfig-vim'
+Plug 'luochen1990/rainbow'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 " --- Color Schemes ---
@@ -94,6 +101,4 @@ endif
 syntax on
 
 colorscheme onedark
-
-" --- Settings ---
 
