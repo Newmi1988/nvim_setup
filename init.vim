@@ -12,6 +12,14 @@ let g:rainbow_conf= {
 map <C-n> :NERDTreeToggle<CR>
 nnoremap <C-p> :Files<CR>
 
+" Exit terminal with esc
+tnoremap <Esc> <C-\><C-n>
+
+" Switch with shift + h / l tabs
+nnoremap H gT
+nnoremap L gt
+
+
 " --COC--> 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
