@@ -17,12 +17,20 @@ Plug('nvim-treesitter/nvim-treesitter', {['do'] = fn[':TSUpdate']})  -- We recom
 Plug 'editorconfig/editorconfig-vim'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-commentary'
+Plug 'nvim-lua/completion-nvim'
+Plug('nvim-treesitter/nvim-treesitter', {['do'] = fn[':TSUpdate']})  -- We recommend updating the parsers on update
 vim.call('plug#end')
 
 -- global options
 cmd 'colorscheme onedark' -- set color theme
 cmd 'syntax on'
 cmd 'set number'
+
+-- autocomplete options
+-- " Set completeopt to have a better completion experience
+cmd 'set completeopt=menuone,noinsert,noselect'
+-- " Avoid showing message extra message when using completion
+cmd 'set shortmess+=c'
 
 g.rainbow_active = 1
 g.onedark_termcolors = 256
@@ -32,6 +40,19 @@ g.rainbow_conf = {
 }
 
 -- Key mappings
+---- Helper funcs
+local function t(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+function _G.smart_tab()
+    return vim.fn.pumvisible() == 1 and t'<C-n>' or t'<Tab>'
+end
+
+function _G.smart_tab_inv()
+    return vim.fn.pumvisible() == 1 and t'<C-p>' or t'<S-Tab>'
+end
+
 
 ---- coursor movement
 vim.api.nvim_set_keymap('n','<C-J>','<C-W><C-J>', { noremap = true, silent = true })
@@ -44,6 +65,10 @@ vim.api.nvim_set_keymap('n','<C-p>',':GFiles<CR>', { noremap = true, silent = tr
 
 ---- escape the terminal
 vim.api.nvim_set_keymap('t','<Esx>','<C.\\><C-n>', {noremap = true, silent = true})
+
+---- autocomplete
+vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.smart_tab()', {expr = true, noremap = true})
+vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.smart_tab_inv()', {expr = true, noremap = true})
 
 -- LSP Config
 local nvim_lsp = require('lspconfig')
@@ -92,3 +117,21 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+-- Autocomplete
+require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
+
+-- Treesitter
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = { }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { },  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
