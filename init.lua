@@ -64,7 +64,7 @@ vim.api.nvim_set_keymap('n','<C-H>','<C-W><C-H>', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('n','<C-p>',':GFiles<CR>', { noremap = true, silent = true})
 
 ---- escape the terminal
-vim.api.nvim_set_keymap('t','<Esx>','<C.\\><C-n>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('t','<Esc>','<C-\\><C-n>', {noremap = true, silent = true})
 
 ---- autocomplete
 vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.smart_tab()', {expr = true, noremap = true})
