@@ -21,8 +21,6 @@ nvim
 :PlugInstall
 ```
 
-3. CoC
-Install Languages 
-```
-:CocInstall coc-pyright
-```
+3. Linter/LSP
+Install the npm package from this [list](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md)
+
