@@ -17,8 +17,17 @@ Plug('nvim-treesitter/nvim-treesitter', {['do'] = fn[':TSUpdate']})  -- We recom
 Plug 'editorconfig/editorconfig-vim'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-commentary'
-Plug 'nvim-lua/completion-nvim'
+-- Plug 'nvim-lua/completion-nvim'
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = fn[':TSUpdate']})  -- We recommend updating the parsers on update
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
+-- Autocomplete
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 vim.call('plug#end')
 
 -- global options
@@ -35,18 +44,18 @@ cmd 'set shortmess+=c'
 g.rainbow_active = 1
 g.onedark_termcolors = 256
 g.rainbow_conf = {
-    guifgs = {'#F8FF00','#FF64EC','#84FE77','#77FEF7'},
-    ctermfgs = {'lightyellow','lightblue','lightcyan','lightmagenta'}
+  guifgs = {'#F8FF00','#FF64EC','#84FE77','#77FEF7'},
+  ctermfgs = {'lightyellow','lightblue','lightcyan','lightmagenta'}
 }
 
 -- Key mappings
 ---- Helper funcs
 local function t(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
 function _G.smart_tab()
-    return vim.fn.pumvisible() == 1 and t'<C-n>' or t'<Tab>'
+  return vim.fn.pumvisible() == 1 and t'<C-n>' or t'<Tab>'
 end
 
 function _G.smart_tab_inv()
@@ -66,9 +75,9 @@ vim.api.nvim_set_keymap('n','<C-p>',':GFiles<CR>', { noremap = true, silent = tr
 ---- escape the terminal
 vim.api.nvim_set_keymap('t','<Esc>','<C-\\><C-n>', {noremap = true, silent = true})
 
----- autocomplete
-vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.smart_tab()', {expr = true, noremap = true})
-vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.smart_tab_inv()', {expr = true, noremap = true})
+---- autocomplete (Maybe obsolete with nvim cmp
+-- vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.smart_tab()', {expr = true, noremap = true})
+-- vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.smart_tab_inv()', {expr = true, noremap = true})
 
 -- LSP Config
 local nvim_lsp = require('lspconfig')
@@ -119,7 +128,7 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Autocomplete
-require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
+-- require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
 
 -- Treesitter
 require'nvim-treesitter.configs'.setup {
@@ -135,3 +144,17 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+-- GitSign
+require('gitsigns').setup()
+
+-- Indent Blankline
+require("indent_blankline").setup {
+  char = "|",
+  buftype_exclude = {"terminal"}
+}
+
+-- Nvim cmp
+cmd 'set completeopt=menu,menuone,noselect'
+
+require('cmp').setup()
