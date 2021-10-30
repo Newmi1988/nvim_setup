@@ -51,19 +51,6 @@ g.rainbow_conf = {
 }
 
 -- Key mappings
----- Helper funcs
-local function t(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-function _G.smart_tab()
-  return vim.fn.pumvisible() == 1 and t'<C-n>' or t'<Tab>'
-end
-
-function _G.smart_tab_inv()
-    return vim.fn.pumvisible() == 1 and t'<C-p>' or t'<S-Tab>'
-end
-
 
 ---- coursor movement
 vim.api.nvim_set_keymap('n','<C-J>','<C-W><C-J>', { noremap = true, silent = true })
@@ -76,10 +63,6 @@ vim.api.nvim_set_keymap('n','<C-p>',':GFiles<CR>', { noremap = true, silent = tr
 
 ---- escape the terminal
 vim.api.nvim_set_keymap('t','<Esc>','<C-\\><C-n>', {noremap = true, silent = true})
-
----- autocomplete (Maybe obsolete with nvim cmp
--- vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.smart_tab()', {expr = true, noremap = true})
--- vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.smart_tab_inv()', {expr = true, noremap = true})
 
 -- LSP Config
 local nvim_lsp = require('lspconfig')
