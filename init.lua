@@ -51,6 +51,8 @@ g.rainbow_conf = {
 }
 
 -- Key mappings
+---- nerdtree
+vim.api.nvim_set_keymap('n','<C-N>',':NERDTreeToggle<CR>', { noremap = true, silent = true})
 
 ---- coursor movement
 vim.api.nvim_set_keymap('n','<C-J>','<C-W><C-J>', { noremap = true, silent = true })
