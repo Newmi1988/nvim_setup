@@ -13,7 +13,6 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf.vim'
 Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
-Plug('nvim-treesitter/nvim-treesitter', {['do'] = fn[':TSUpdate']})  -- We recommend updating the parsers on update
 Plug 'editorconfig/editorconfig-vim'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-commentary'
@@ -62,6 +61,9 @@ vim.api.nvim_set_keymap('n','<C-H>','<C-W><C-H>', { noremap = true, silent = tru
 
 ---- fzf file search
 vim.api.nvim_set_keymap('n','<C-p>',':GFiles<CR>', { noremap = true, silent = true})
+
+---- fzf with ripgrep (see README)
+vim.api.nvim_set_keymap('n','<C-g>',':Rg<CR>',{ noremap = true, silent = true})
 
 ---- escape the terminal
 vim.api.nvim_set_keymap('t','<Esc>','<C-\\><C-n>', {noremap = true, silent = true})

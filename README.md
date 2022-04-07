@@ -24,3 +24,22 @@ nvim
 3. Linter/LSP
 Install the npm package from this [list](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md)
 
+4. Use [ripgrep](https://github.com/BurntSushi/ripgrep)
+Install with brew
+```
+brew install ripgrep
+```
+
+Install with cargo
+```
+cargo install ripgrep 
+```
+
+## Errors:
+```
+/[...]/query.lua:161: query: invalid node type at position [...]
+```
+Possible Fix: Update Treesitter 
+```
+:TSUpdate
+```
