@@ -17,7 +17,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-commentary'
 -- Plug 'nvim-lua/completion-nvim'
-Plug('nvim-treesitter/nvim-treesitter', {['do'] = fn[':TSUpdate']})  -- We recommend updating the parsers on update
+Plug('nvim-treesitter/nvim-treesitter', {['do'] = fn[':TSUpdate']})
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -28,7 +28,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+-- Plug 'hrsh7th/vim-vsnip'
 vim.call('plug#end')
 
 -- global options
@@ -121,7 +121,7 @@ end
 
 -- Treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "c", "lua", "rust", "python", "javascript", "go" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = { }, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
