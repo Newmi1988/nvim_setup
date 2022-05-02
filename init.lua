@@ -8,6 +8,7 @@ local Plug = vim.fn['plug#']
 -- load plugins
 vim.call('plug#begin', '~/.config/nvim/plugged')
 Plug 'joshdick/onedark.vim'
+Plug 'catppuccin/nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -32,7 +33,7 @@ Plug 'hrsh7th/cmp-vsnip'
 vim.call('plug#end')
 
 -- global options
-cmd 'colorscheme onedark' -- set color theme
+-- cmd 'colorscheme onedark' -- set color theme
 cmd 'syntax on'
 cmd 'set number'
 
@@ -203,3 +204,67 @@ cmp.setup.cmdline(':', {
 -- require('lspconfig')[pyright].setup {
 --   capabilities = capabilities
 -- }
+
+-- catppuccin color scheme
+local catppuccin = require("catppuccin")
+
+-- configure it
+catppuccin.setup(
+    {
+		colorscheme = "dark_catppuccin",
+		transparency = false,
+		term_colors = false,
+		styles = {
+			comments = "italic",
+			functions = "italic",
+			keywords = "italic",
+			strings = "NONE",
+			variables = "NONE",
+		},
+		integrations = {
+			treesitter = true,
+			native_lsp = {
+				enabled = true,
+				virtual_text = {
+					errors = "italic",
+					hints = "italic",
+					warnings = "italic",
+					information = "italic",
+				},
+				underlines = {
+					errors = "underline",
+					hints = "underline",
+					warnings = "underline",
+					information = "underline",
+				}
+			},
+			lsp_trouble = false,
+			lsp_saga = false,
+			gitgutter = false,
+			gitsigns = false,
+			telescope = false,
+			nvimtree = {
+				enabled = false,
+				show_root = false,
+			},
+			which_key = false,
+			indent_blankline = {
+				enabled = false,
+				colored_indent_levels = false,
+			},
+			dashboard = false,
+			neogit = false,
+			vim_sneak = false,
+			fern = false,
+			barbar = false,
+			bufferline = false,
+			markdown = false,
+			lightspeed = false,
+			ts_rainbow = false,
+			hop = false,
+		}
+	}
+)
+
+-- Lua
+vim.cmd[[colorscheme catppuccin]]
