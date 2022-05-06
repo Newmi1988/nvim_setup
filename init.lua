@@ -15,7 +15,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf.vim'
 Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
 Plug 'editorconfig/editorconfig-vim'
-Plug 'luochen1990/rainbow'
+-- Plug 'luochen1990/rainbow'
+Plug 'p00f/nvim-ts-rainbow'
 Plug 'tpope/vim-commentary'
 -- Plug 'nvim-lua/completion-nvim'
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = fn[':TSUpdate']})
@@ -43,12 +44,12 @@ cmd 'set completeopt=menuone,noinsert,noselect'
 -- " Avoid showing message extra message when using completion
 cmd 'set shortmess+=c'
 
-g.rainbow_active = 1
-g.onedark_termcolors = 256
-g.rainbow_conf = {
-  guifgs = {'#F8FF00','#FF64EC','#84FE77','#77FEF7'},
-  ctermfgs = {'lightyellow','lightblue','lightcyan','lightmagenta'}
-}
+-- g.rainbow_active = 1
+-- g.onedark_termcolors = 256
+-- g.rainbow_conf = {
+--   guifgs = {'#F8FF00','#FF64EC','#84FE77','#77FEF7'},
+--   ctermfgs = {'lightyellow','lightblue','lightcyan','lightmagenta'}
+-- }
 
 -- Key mappings
 ---- nerdtree
@@ -133,6 +134,14 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
+  rainbow = {
+    enable = true,
+    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
+  }
 }
 
 -- GitSign
@@ -241,7 +250,7 @@ catppuccin.setup(
 			lsp_trouble = false,
 			lsp_saga = false,
 			gitgutter = false,
-			gitsigns = false,
+			gitsigns = true,
 			telescope = false,
 			nvimtree = {
 				enabled = false,
@@ -249,8 +258,8 @@ catppuccin.setup(
 			},
 			which_key = false,
 			indent_blankline = {
-				enabled = false,
-				colored_indent_levels = false,
+				enabled = true,
+				colored_indent_levels = true,
 			},
 			dashboard = false,
 			neogit = false,
@@ -260,7 +269,7 @@ catppuccin.setup(
 			bufferline = false,
 			markdown = false,
 			lightspeed = false,
-			ts_rainbow = false,
+			ts_rainbow = true,
 			hop = false,
 		}
 	}
