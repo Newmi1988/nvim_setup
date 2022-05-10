@@ -7,7 +7,7 @@ local Plug = vim.fn['plug#']
 
 -- load plugins
 vim.call('plug#begin', '~/.config/nvim/plugged')
-Plug 'joshdick/onedark.vim'
+-- Plug 'joshdick/onedark.vim'
 Plug 'catppuccin/nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'preservim/nerdtree'
@@ -30,7 +30,10 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
--- Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+-- Statusbar
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 vim.call('plug#end')
 
 -- global options
@@ -275,5 +278,35 @@ catppuccin.setup(
 	}
 )
 
--- Lua
 vim.cmd[[colorscheme catppuccin]]
+
+-- Statusbar
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+    globalstatus = false,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
