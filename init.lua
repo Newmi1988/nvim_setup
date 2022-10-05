@@ -50,13 +50,6 @@ cmd 'set completeopt=menuone,noinsert,noselect'
 -- " Avoid showing message extra message when using completion
 cmd 'set shortmess+=c'
 
--- g.rainbow_active = 1
--- g.onedark_termcolors = 256
--- g.rainbow_conf = {
---   guifgs = {'#F8FF00','#FF64EC','#84FE77','#77FEF7'},
---   ctermfgs = {'lightyellow','lightblue','lightcyan','lightmagenta'}
--- }
-
 -- Key mappings
 ---- nerdtree
 vim.api.nvim_set_keymap('n','<C-N>',':NERDTreeToggle<CR>', { noremap = true, silent = true})
@@ -174,12 +167,16 @@ cmp.setup({
       -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
     end,
   },
+  window = {
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
+  },
   mapping = {
     ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
     ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }), 
-    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-y>'] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
     ['<C-e>'] = cmp.mapping({
       i = cmp.mapping.abort(),
