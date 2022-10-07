@@ -43,6 +43,7 @@ vim.call('plug#end')
 -- cmd 'colorscheme onedark' -- set color theme
 cmd 'syntax on'
 cmd 'set number'
+cmd 'set relativenumber'
 
 -- autocomplete options
 -- " Set completeopt to have a better completion experience
