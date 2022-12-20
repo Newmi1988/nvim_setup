@@ -28,6 +28,8 @@ Plug 'sindrets/diffview.nvim'
 Plug 'tpope/vim-fugitive'
 -- Undo tree
 Plug 'mbbill/undotree'
+-- Multiline
+Plug('mg979/vim-visual-multi', {['branch'] = 'master'})
 -- Lsp Zero 
 ---- LSP Support
 Plug 'neovim/nvim-lspconfig'
@@ -52,7 +54,7 @@ vim.call('plug#end')
 ---- Some Plugins that don´t get their own lua file
 -- Key mappings
 ---- nerdtree
-vim.api.nvim_set_keymap('n','<C-N>',':NERDTreeToggle<CR>', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('n','<C-B>',':NERDTreeToggle<CR>', { noremap = true, silent = true})
 
 ---- fzf file search
 vim.api.nvim_set_keymap('n','<C-p>',':GFiles<CR>', { noremap = true, silent = true})
