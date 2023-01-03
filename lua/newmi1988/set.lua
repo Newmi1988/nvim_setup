@@ -13,7 +13,6 @@ cmd 'set completeopt=menuone,noinsert,noselect'
 -- " Avoid showing message extra message when using completion
 cmd 'set shortmess+=c'
 
-vim.opt.guicursor = ""
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
