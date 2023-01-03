@@ -5,51 +5,63 @@ local g = vim.g
 local opt = vim.opt
 local Plug = vim.fn['plug#']
 
+-- bootstrap lazy.nvim 
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
 -- load plugins
-vim.call('plug#begin', '~/.config/nvim/plugged')
-Plug 'catppuccin/nvim'
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'junegunn/fzf.vim'
-Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
-Plug 'editorconfig/editorconfig-vim'
-Plug 'p00f/nvim-ts-rainbow'
-Plug 'tpope/vim-commentary'
-Plug('nvim-treesitter/nvim-treesitter', {['do'] = fn[':TSUpdate']})
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'lukas-reineke/indent-blankline.nvim'
+-- vim.call('plug#begin', '~/.config/nvim/plugged')
+require("lazy").setup({
+ 'catppuccin/nvim',
+ 'preservim/nerdtree',
+ 'Xuyuanp/nerdtree-git-plugin',
+ 'junegunn/fzf.vim',
+ {'junegunn/fzf', build='fzf#install'},
+ 'editorconfig/editorconfig-vim',
+ 'p00f/nvim-ts-rainbow',
+ 'tpope/vim-commentary',
+ {'nvim-treesitter/nvim-treesitter', build=':TSUpdate'},
+'lewis6991/gitsigns.nvim',
+'lukas-reineke/indent-blankline.nvim',
 -- Statusbar
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
+'nvim-lualine/lualine.nvim',
+'kyazdani42/nvim-web-devicons',
 -- Diff Viewer
-Plug 'nvim-lua/plenary.nvim'
-Plug 'sindrets/diffview.nvim'
+'nvim-lua/plenary.nvim',
+'sindrets/diffview.nvim',
 -- Git Plugins
-Plug 'tpope/vim-fugitive'
+'tpope/vim-fugitive',
 -- Undo tree
-Plug 'mbbill/undotree'
+'mbbill/undotree',
 -- Multiline
-Plug('mg979/vim-visual-multi', {['branch'] = 'master'})
+{'mg979/vim-visual-multi',branch= 'master'},
 -- Lsp Zero 
 ---- LSP Support
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
-
-----Autocompletion
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-nvim-lua'
-
-----  Snippets
-Plug 'L3MON4D3/LuaSnip'
-Plug 'rafamadriz/friendly-snippets'
-
-Plug 'VonHeikemen/lsp-zero.nvim'
-vim.call('plug#end')
+'neovim/nvim-lspconfig',
+'williamboman/mason.nvim',
+'williamboman/mason-lspconfig.nvim',
+----------Autocompletion
+'hrsh7th/nvim-cmp',
+'hrsh7th/cmp-buffer',
+'hrsh7th/cmp-path',
+'saadparwaiz1/cmp_luasnip',
+'hrsh7th/cmp-nvim-lsp',
+'hrsh7th/cmp-nvim-lua',
+----------  Snippets
+'L3MON4D3/LuaSnip',
+'rafamadriz/friendly-snippets',
+'VonHeikemen/lsp-zero.nvim'
+})
 
 ---- Some Plugins that don´t get their own lua file
 -- Key mappings
