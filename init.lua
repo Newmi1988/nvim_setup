@@ -60,7 +60,9 @@ require("lazy").setup({
 ----------  Snippets
 'L3MON4D3/LuaSnip',
 'rafamadriz/friendly-snippets',
-'VonHeikemen/lsp-zero.nvim'
+'VonHeikemen/lsp-zero.nvim',
+-- docstring generator
+{'kkoomen/vim-doge',build='npm i --no-save && npm run build:binary:unix'}
 })
 
 ---- Some Plugins that don´t get their own lua file
