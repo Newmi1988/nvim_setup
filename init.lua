@@ -65,6 +65,28 @@ require("lazy").setup({
 {'kkoomen/vim-doge',build='npm i --no-save && npm run build:binary:unix'}
 })
 
+---- Terminal autocommands 
+-- Start terminal with insert mode
+local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
+autocmd('TermOpen', {
+  pattern = '',
+  command = 'startinsert'
+})
+
+-- Close terminal buffer on process exit
+autocmd('BufLeave', {
+  pattern = 'term://*',
+  command = 'stopinsert'
+})
+
+vim.api.nvim_set_keymap('n','<leader>ts',':terminal tss<CR>', { noremap = true, silent = true})
+
+-- close terminal when cmd exits (buggy)
+-- autocmd('TermClose', {
+--   pattern = 'term://*',
+--   command = "'bdelete! ' . expand('<abuf>')"
+-- })
+
 ---- Some Plugins that don´t get their own lua file
 -- Key mappings
 ---- nerdtree
