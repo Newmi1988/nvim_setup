@@ -63,7 +63,8 @@ require("lazy").setup({
 'VonHeikemen/lsp-zero.nvim',
 -- docstring generator
 {'kkoomen/vim-doge',build='npm i --no-save && npm run build:binary:unix'},
-'folke/trouble.nvim'
+'folke/trouble.nvim',
+'mfussenegger/nvim-lint'
 })
 
 ---- Terminal autocommands 
