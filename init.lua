@@ -44,7 +44,10 @@ require("lazy").setup({
 -- Undo tree
 'mbbill/undotree',
 -- Multiline
-{'mg979/vim-visual-multi',branch= 'master'},
+{
+  'mg979/vim-visual-multi',
+  branch= 'master'
+},
 -- Lsp Zero 
 ---- LSP Support
 'neovim/nvim-lspconfig',
@@ -62,9 +65,19 @@ require("lazy").setup({
 'rafamadriz/friendly-snippets',
 'VonHeikemen/lsp-zero.nvim',
 -- docstring generator
-{'kkoomen/vim-doge',build='npm i --no-save && npm run build:binary:unix'},
+{
+  'kkoomen/vim-doge',
+  build='npm i --no-save && npm run build:binary:unix'
+},
 'folke/trouble.nvim',
-'mfussenegger/nvim-lint'
+'mfussenegger/nvim-lint',
+{
+  'nvim-telescope/telescope.nvim',
+  version = '0.1.1',
+  requires = {
+    'nvim-lua/plenary.nvim'
+  }
+}
 })
 
 ---- Terminal autocommands 
@@ -103,6 +116,8 @@ vim.api.nvim_set_keymap('n','<C-g>',':Rg<CR>',{ noremap = true, silent = true})
 
 ---- escape the terminal
 vim.api.nvim_set_keymap('t','<Esc>','<C-\\><C-n>', {noremap = true, silent = true})
+---- 
+vim.api.nvim_set_keymap('n','<leader>gst',':Git<CR>', {noremap = true, silent = true})
 
 -- GitSign
 require('gitsigns').setup()
