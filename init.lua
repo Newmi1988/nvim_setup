@@ -3,7 +3,6 @@ require('newmi1988')
 local fn = vim.fn 
 local g = vim.g
 local opt = vim.opt
-local Plug = vim.fn['plug#']
 
 -- bootstrap lazy.nvim 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
