@@ -1,45 +1,14 @@
 # nvim_setup
-My nvim config
+Personal Nvim Config. 
 
-## Plug Install
-Use the default install for plug like 
+## dependencies
+1. git
+2. [fzf](https://github.com/junegunn/fzf) for fuzzy search
+3. [ripgrep](https://github.com/BurntSushi/ripgrep) for blazingly fast grep like search
+4. [Node.js](https://github.com/nodejs/node) for LSPs
 
-```
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-```
+## Install
+Given you have the dependencies this setup should bootstrap itself.
+It uses [lazy.nvim](https://github.com/folke/lazy.nvim) to install plugins.
 
-## Install the plugins with
-1. Start vim
 
-```
-nvim 
-```
-
-2. Use Vim-Plug
-```
-:PlugInstall
-```
-
-3. Linter/LSP
-Install the npm package from this [list](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md)
-
-4. Use [ripgrep](https://github.com/BurntSushi/ripgrep)
-Install with brew
-```
-brew install ripgrep
-```
-
-Install with cargo
-```
-cargo install ripgrep 
-```
-
-## Errors:
-```
-/[...]/query.lua:161: query: invalid node type at position [...]
-```
-Possible Fix: Update Treesitter 
-```
-:TSUpdate
-```
