@@ -22,7 +22,13 @@ vim.opt.rtp:prepend(lazypath)
 -- vim.call('plug#begin', '~/.config/nvim/plugged')
 require("lazy").setup({
  'catppuccin/nvim',
- 'preservim/nerdtree',
+ {
+  'nvim-tree/nvim-tree.lua',
+  requires = {
+    'nvim-tree/nvim-web-devicons', 
+  },
+  version = 'nightly'
+},
  'Xuyuanp/nerdtree-git-plugin',
  'junegunn/fzf.vim',
  {'junegunn/fzf', build='fzf#install'},
@@ -103,8 +109,6 @@ vim.api.nvim_set_keymap('n','<leader>ts',':terminal tss<CR>', { noremap = true, 
 
 ---- Some Plugins that don´t get their own lua file
 -- Key mappings
----- nerdtree
-vim.api.nvim_set_keymap('n','<C-B>',':NERDTreeToggle<CR>', { noremap = true, silent = true})
 
 ---- fzf file search
 vim.api.nvim_set_keymap('n','<C-p>',':GFiles<CR>', { noremap = true, silent = true})
@@ -115,8 +119,6 @@ vim.api.nvim_set_keymap('n','<C-g>',':Rg<CR>',{ noremap = true, silent = true})
 
 ---- escape the terminal
 vim.api.nvim_set_keymap('t','<Esc>','<C-\\><C-n>', {noremap = true, silent = true})
----- 
-vim.api.nvim_set_keymap('n','<leader>gst',':Git<CR>', {noremap = true, silent = true})
 
 -- GitSign
 require('gitsigns').setup()
