@@ -29,6 +29,10 @@ require("lazy").setup({
   },
   version = 'nightly'
 },
+{
+  'glepnir/dashboard-nvim',
+  event = 'VimEnter',
+},
  'Xuyuanp/nerdtree-git-plugin',
  'junegunn/fzf.vim',
  {'junegunn/fzf', build='fzf#install'},
