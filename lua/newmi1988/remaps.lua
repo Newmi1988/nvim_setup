@@ -34,3 +34,9 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+
+-- tmux session changer
+vim.api.nvim_set_keymap('n','<leader>ts',':terminal tss<CR>', { noremap = true, silent = true})
+
+---- escape the terminal
+vim.api.nvim_set_keymap('t','<Esc>','<C-\\><C-n>', {noremap = true, silent = true})
