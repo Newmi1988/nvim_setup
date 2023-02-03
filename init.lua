@@ -47,6 +47,7 @@ require("lazy").setup({
 'kyazdani42/nvim-web-devicons',
 -- Diff Viewer
 'nvim-lua/plenary.nvim',
+'ThePrimeagen/harpoon',
 'sindrets/diffview.nvim',
 -- Git Plugins
 'tpope/vim-fugitive',
