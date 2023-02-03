@@ -6,7 +6,17 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 -- empty setup using defaults
-require("nvim-tree").setup()
+require("nvim-tree").setup({
+  view = {
+    width = 30,
+    mappings = {
+      list = {
+        { key = "v", action = "vsplit" },
+        { key = "s", action = "split" },
+      },
+    },
+  },
+})
 
 
 vim.api.nvim_set_keymap('n','<C-B>',':NvimTreeToggle<CR>', { noremap = true, silent = true})
