@@ -78,15 +78,7 @@ require("lazy").setup({
   ---- Toogle comments on lines
   'tpope/vim-commentary',
   ---- Show indentation line
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    config = function ()
-      require("indent_blankline").setup({
-        char = "|",
-        buftype_exclude = {"terminal"}
-      })
-    end,
-  },
+  'lukas-reineke/indent-blankline.nvim',
   ---- visualize undos
   'mbbill/undotree',
   ---- Multiline edit
@@ -131,6 +123,16 @@ require("lazy").setup({
   'folke/trouble.nvim',
   -- linter plugin
   'mfussenegger/nvim-lint',
+  -- Language Specific Plugins
+  ---- Cargo
+  {
+    'saecki/crates.nvim',
+    event = "BufEnter Cargo.toml",
+    requires = { { 'nvim-lua/plenary.nvim' } },
+    config = function()
+        require('crates').setup()
+    end,
+  },
 })
 
 -- Terminal autocommands 

@@ -5,6 +5,7 @@
   "cmp-nvim-lua": { "branch": "main", "commit": "f3491638d123cfd2c8048aefaf66d246ff250ca6" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "18095520391186d634a0045dacaa346291096566" },
+  "crates.nvim": { "branch": "main", "commit": "1bca9122ddc4bf4c6573402bf6686fc084470a7e" },
   "dashboard-nvim": { "branch": "master", "commit": "084e5561dd9db710cd33741db5def738425c7a86" },
   "diffview.nvim": { "branch": "main", "commit": "11827d46e939b4748dbdb7e0df4982a63bd59d26" },
   "editorconfig-vim": { "branch": "master", "commit": "1d54632f7fcad38df8e428f349bc58b15af4b206" },
