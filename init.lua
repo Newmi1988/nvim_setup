@@ -19,7 +19,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- load plugins
--- vim.call('plug#begin', '~/.config/nvim/plugged')
 require("lazy").setup({
   ---- utils (dependencies for many plugins)
   'nvim-lua/plenary.nvim',
