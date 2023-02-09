@@ -56,6 +56,17 @@ require("lazy").setup({
     },
     version = 'nightly'
   },
+  -- Sessions
+  ---- auto session manager 
+  {
+    'rmagatti/auto-session',
+    config = function()
+      require("auto-session").setup {
+        log_level = "error",
+        auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+      }
+    end
+  },
   -- Fuzzy finder
   ---- fzf integration
   'junegunn/fzf.vim',
