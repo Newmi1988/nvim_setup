@@ -1,10 +1,10 @@
 require('newmi1988')
 
-local fn = vim.fn 
+local fn = vim.fn
 local g = vim.g
 local opt = vim.opt
 
--- bootstrap lazy.nvim 
+-- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -25,12 +25,16 @@ require("lazy").setup({
   -- themes and ui
   ---- catppuccin theme
   'catppuccin/nvim',
+  ---- tokio night
+  'folke/tokyonight.nvim',
+  ---- colorscheme inspired by kanagawa
+  "rebelot/kanagawa.nvim",
   ---- Colored brackets
   'p00f/nvim-ts-rainbow',
   ---- git signs next to lines
   {
     'lewis6991/gitsigns.nvim',
-    config = function ()
+    config = function()
       require('gitsigns').setup()
     end,
   },
@@ -44,7 +48,7 @@ require("lazy").setup({
   ---- Icons
   {
     'kyazdani42/nvim-web-devicons',
-    config = function ()
+    config = function()
       require('nvim-web-devicons').setup()
     end,
   },
@@ -57,13 +61,18 @@ require("lazy").setup({
     version = 'nightly'
   },
   -- Sessions
-  ---- auto session manager 
+  ---- auto session manager
   {
     'rmagatti/auto-session',
     config = function()
       require("auto-session").setup {
         log_level = "error",
-        auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+        auto_session_suppress_dirs = {
+          "~/",
+          "~/Projects",
+          "~/Downloads",
+          "/"
+        },
       }
     end
   },
@@ -71,8 +80,7 @@ require("lazy").setup({
   ---- fzf integration
   'junegunn/fzf.vim',
   {
-    'junegunn/fzf', 
-    build='fzf#install'
+    'junegunn/fzf',
   },
   ---- Telescope - Search everything
   {
@@ -94,25 +102,25 @@ require("lazy").setup({
   ---- Multiline edit
   {
     'mg979/vim-visual-multi',
-    branch= 'master'
+    branch = 'master'
   },
   ---- mark and jump to file
   'ThePrimeagen/harpoon',
   -- docstring generator
   {
     'kkoomen/vim-doge',
-    build='npm i --no-save && npm run build:binary:unix'
+    build = 'npm i --no-save && npm run build:binary:unix'
   },
   -- Git Plugins
   ---- nvim git integration
   'tpope/vim-fugitive',
-  ---- diffviewer 
+  ---- diffviewer
   'sindrets/diffview.nvim',
-  -- Lsp 
+  -- Lsp
   ---- general tokenizer and language parser (api for treesitter)
   {
     'nvim-treesitter/nvim-treesitter',
-    build=':TSUpdate'
+    build = ':TSUpdate'
   },
   ---- LSP Support
   'neovim/nvim-lspconfig',
@@ -140,14 +148,14 @@ require("lazy").setup({
     event = "BufEnter Cargo.toml",
     requires = { { 'nvim-lua/plenary.nvim' } },
     config = function()
-        require('crates').setup()
+      require('crates').setup()
     end,
   },
 })
 
--- Terminal autocommands 
+-- Terminal autocommands
 ---- Start terminal with insert mode
-local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
+local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 autocmd('TermOpen', {
   pattern = '',
   command = 'startinsert'
