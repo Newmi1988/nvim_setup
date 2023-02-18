@@ -43,6 +43,8 @@ require("lazy").setup({
     'glepnir/dashboard-nvim',
     event = 'VimEnter',
   },
+  ---- Zen mode
+  "folke/zen-mode.nvim",
   ---- Statusbar
   'nvim-lualine/lualine.nvim',
   ---- Icons
