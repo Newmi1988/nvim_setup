@@ -144,7 +144,8 @@ require("lazy").setup({
   -- linter plugin
   'mfussenegger/nvim-lint',
   -- Language Specific Plugins
-  ---- Cargo
+  ---- Rust
+  ------ Cargo
   {
     'saecki/crates.nvim',
     event = "BufEnter Cargo.toml",
@@ -153,6 +154,8 @@ require("lazy").setup({
       require('crates').setup()
     end,
   },
+  ------- Rust-Tools
+  'simrat39/rust-tools.nvim',
 })
 
 -- Terminal autocommands
