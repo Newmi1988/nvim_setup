@@ -2,7 +2,7 @@ local fugitive_custom_group = vim.api.nvim_create_augroup("fugitive_custom_group
 local autocmd = vim.api.nvim_create_autocmd
 
 vim.api.nvim_set_keymap('n', '<leader>gst', ':Git<CR>',
-  { noremap = true, silent = true }
+  { noremap = true, silent = true, desc = "Fugitive: Git status" }
 )
 
 autocmd("BufWinEnter", {

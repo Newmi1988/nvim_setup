@@ -1,12 +1,12 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, {desc="Vim: Explorer"})
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", {desc="Move line up"})
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", {desc="Move line down"})
 
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "J", "mzJ`z", {desc="Combine lines"})
+vim.keymap.set("n", "<C-d>", "<C-d>zz",{desc="Delete"})
+vim.keymap.set("n", "<C-u>", "<C-u>zz",{desc="Undo"})
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
@@ -37,10 +37,10 @@ vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left>
 
 -- tmux session changer
 vim.api.nvim_set_keymap('n', '<leader>ts', ':terminal tss<CR>', 
-  { noremap = true, silent = true }
+  { noremap = true, silent = true , desc="tmux session selector"}
 )
 
 ---- escape the terminal
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', 
-  { noremap = true, silent = true }
+  { noremap = true, silent = true , desc="Escape Terminal"}
 )

@@ -1,30 +1,31 @@
 local builtin = require('telescope.builtin')
 -- Find files
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>cb', builtin.current_buffer_fuzzy_find, {})
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Telescope: Find files" })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Telescope: Live grep" })
+vim.keymap.set('n', '<leader>cb', builtin.current_buffer_fuzzy_find, { desc = "Telescope: Current buffer fuzzy find" })
 
 -- Find buffers and search help files
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fq', builtin.quickfix, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Telescope: Search buffer" })
+vim.keymap.set('n', '<leader>fq', builtin.quickfix, { desc = "Telescope: Quickfix list" })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Telescope: Help tags" })
 
 -- lsp binds
-vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
-vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
-vim.keymap.set('n', '<leader>fi', builtin.lsp_implementations, {})
+vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = "Telescope: Find lsp references" })
+vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = "Telescope: Diagnostics" })
+vim.keymap.set('n', '<leader>fi', builtin.lsp_implementations, { desc = "Telescope: LSP Implementation" })
 
 ---- go to lsp commands
-vim.keymap.set('n', 'go', builtin.lsp_workspace_symbols, {})
-vim.keymap.set('n', 'gO', builtin.lsp_document_symbols, {})
-vim.keymap.set('n', 'gd', builtin.lsp_definitions, {})
-vim.keymap.set('n', 'gi', builtin.lsp_implementations, {})
-vim.keymap.set('n', 'gtd', builtin.lsp_type_definitions, {})
+vim.keymap.set('n', 'go', builtin.lsp_workspace_symbols, { desc = "Telescope: LSP Workspace Symbols" })
+vim.keymap.set('n', 'gO', builtin.lsp_document_symbols, { desc = "Telescope: LSP Document Symbols" })
+vim.keymap.set('n', 'gd', builtin.lsp_definitions, { desc = "Telescope: LSP Definitions" })
+vim.keymap.set('n', 'gtd', builtin.lsp_type_definitions, {desc="Telescope: Type definition"})
 
 -- git finder
-vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
-vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
-vim.keymap.set('n', '<leader>gs', builtin.git_stash, {})
+vim.keymap.set('n', '<leader>gc', builtin.git_commits, {desc="Telescope: Git commits"})
+vim.keymap.set('n', '<leader>gb', builtin.git_branches, {desc="Telescope: Git branches"})
+vim.keymap.set('n', '<leader>gs', builtin.git_stash, {desc="Telescope: Git stashes"})
 
 -- find colorschmes
-vim.keymap.set('n', '<leader>cs', builtin.colorscheme, {})
+vim.keymap.set('n', '<leader>cs', builtin.colorscheme, {desc="Telescope: Colorscheme"})
+
+vim.keymap.set('n', '<leader>km', builtin.keymaps, {desc="Telescope: keymaps"})

@@ -18,6 +18,16 @@ rt.setup({
       vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
       vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
     end,
+    settings = {
+      -- to enable rust-analyzer settings visit:
+      -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+      ["rust-analyzer"] = {
+        -- enable clippy on save
+        checkOnSave = {
+          command = "clippy",
+        },
+      },
+    },
   },
   tools = { -- rust-tools options
 

@@ -4,4 +4,4 @@ vim.g.doge_python_settings = {
   omit_redundant_param_types = 1
 }
 
-vim.keymap.set("n", "<leader>gd", ":DogeGenerate")
+vim.keymap.set("n", "<leader>gd", ":DogeGenerate", { desc = "Doge: Generate Docstring" })
