@@ -141,20 +141,6 @@ require("lazy").setup({
   'VonHeikemen/lsp-zero.nvim',
   ---- diagnostics collector
   'folke/trouble.nvim',
-  ---- diagnostics renderer
-  {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    init = function()
-      vim.keymap.set("", "<leader>l", function()
-        require("lsp_lines").toggle()
-      end, { desc = "Toggle lsp_lines" })
-    end,
-    config = function()
-      require("lsp_lines").setup({
-        only_current_line = true,
-      })
-    end,
-  },
   -- linter plugin
   'mfussenegger/nvim-lint',
   -- Language Specific Plugins
