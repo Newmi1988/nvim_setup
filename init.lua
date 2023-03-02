@@ -114,10 +114,19 @@ require("lazy").setup({
   },
   ---- mark and jump to file
   'ThePrimeagen/harpoon',
-  -- docstring generator
+  --  generate docstring
   {
-    'kkoomen/vim-doge',
-    build = 'npm i --no-save && npm run build:binary:unix'
+    "danymat/neogen",
+    keys = {
+      {
+        "<leader>cc",
+        function()
+          require("neogen").generate({})
+        end,
+        desc = "Neogen Comment",
+      },
+    },
+    opts = { snippet_engine = "luasnip" },
   },
   -- Git Plugins
   ---- nvim git integration
