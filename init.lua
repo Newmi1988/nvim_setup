@@ -38,6 +38,11 @@ require("lazy").setup({
       require('gitsigns').setup()
     end,
   },
+  ---- Todo comments
+  {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+  },
   ---- Startup dashboard
   {
     'glepnir/dashboard-nvim',
