@@ -29,6 +29,12 @@ require("dashboard").setup({
         action = 'Telescope live_grep',
         key = 'g',
       },
+      {
+        desc = 'Restore Session',
+        group = 'Number',
+        action = 'RestoreSession',
+        key = 'r',
+      },
     },
   },
 })
