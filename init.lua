@@ -29,8 +29,12 @@ require("lazy").setup({
   'folke/tokyonight.nvim',
   ---- colorscheme inspired by kanagawa
   "rebelot/kanagawa.nvim",
+  -- A dark and light Neovim theme written in fennel
+  'nyoom-engineering/oxocarbon.nvim',
   ---- Colored brackets
   'p00f/nvim-ts-rainbow',
+  ---- Highlight hover word
+  'RRethy/vim-illuminate',
   ---- git signs next to lines
   {
     'lewis6991/gitsigns.nvim',
@@ -114,6 +118,22 @@ require("lazy").setup({
   },
   ---- mark and jump to file
   'ThePrimeagen/harpoon',
+  ---- motion on steroids
+  'ggandor/leap.nvim',
+  {
+    'ggandor/flit.nvim',
+    config = function()
+      require('flit').setup({
+        keys = { f = 'f', F = 'F', t = 't', T = 'T' },
+        -- A string like "nv", "nvo", "o", etc.
+        labeled_modes = "v",
+        multiline = true,
+        -- Like `leap`s similar argument (call-specific overrides).
+        -- E.g.: opts = { equivalence_classes = {} }
+        opts = {},
+      })
+    end
+  },
   --  generate docstring
   {
     "danymat/neogen",
@@ -127,6 +147,31 @@ require("lazy").setup({
       },
     },
     opts = { snippet_engine = "luasnip" },
+  },
+  ---- split or join blocks
+  {
+    'Wansmer/treesj',
+    requires = { 'nvim-treesitter' },
+    config = function()
+      require('treesj').setup({
+        use_default_keymaps = true,
+        -- Node with syntax error will not be formatted
+        check_syntax_error = true,
+        -- If line after join will be longer than max value,
+        -- node will not be formatted
+        max_join_length = 120,
+        -- hold|start|end:
+        -- hold - cursor follows the node/place on which it was called
+        -- start - cursor jumps to the first symbol of the node being formatted
+        -- end - cursor jumps to the last symbol of the node being formatted
+        cursor_behavior = 'hold',
+        -- Notify about possible problems or not
+        notify = true,
+        -- langs = langs,
+        -- Use `dot` for repeat action
+        dot_repeat = true,
+      })
+    end,
   },
   -- Git Plugins
   ---- nvim git integration
