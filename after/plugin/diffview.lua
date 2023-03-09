@@ -108,3 +108,10 @@ require("diffview").setup({
     },
   },
 })
+
+vim.keymap.set('n', '<leader>dvo', ':DiffviewOpen<CR>', {
+  desc = "Diffview: Open",
+})
+vim.keymap.set('n', '<leader>dvc', ':DiffviewClose<CR>', {
+  desc = "Diffview: Open",
+})
