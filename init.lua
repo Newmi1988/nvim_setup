@@ -203,6 +203,26 @@ require("lazy").setup({
   'folke/trouble.nvim',
   -- linter plugin
   'mfussenegger/nvim-lint',
+  -- DAG
+  'mfussenegger/nvim-dap',
+  ---- neodev
+  {
+    'folke/neodev.nvim',
+    config = function()
+      require('neodev').setup({
+        library = {
+          plugins = { "nvim-dap-ui" },
+          types = true,
+        },
+      })
+    end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    requires = {
+      "mfussenegger/nvim-dap",
+    },
+  },
   -- Language Specific Plugins
   ---- Rust
   ------ Cargo
