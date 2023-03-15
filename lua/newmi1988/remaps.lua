@@ -41,6 +41,20 @@ vim.api.nvim_set_keymap('n', '<leader>ts', ':terminal tss<CR>',
 )
 
 ---- escape the terminal
-vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', 
+vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>',
   { noremap = true, silent = true , desc="Escape Terminal"}
+)
+
+-- Git Quickfix List
+vim.api.nvim_set_keymap('n', '<leader>clo', ':copen<CR>',
+  { noremap = true, silent = true , desc='Open quickfix list'}
+)
+vim.api.nvim_set_keymap('n', '<leader>clc', ':cclose<CR>',
+  { noremap = true, silent = true , desc='Close quickfix list'}
+)
+vim.api.nvim_set_keymap('n', '<leader>cln', ':cnext<CR>',
+  { noremap = true, silent = true , desc='Next quickfix item'}
+)
+vim.api.nvim_set_keymap('n', '<leader>clp', ':cprevious<CR>',
+  { noremap = true, silent = true , desc='Previous quickfix item'}
 )

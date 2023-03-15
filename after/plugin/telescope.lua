@@ -17,7 +17,7 @@ vim.keymap.set('n', '<leader>fh', builtin.oldfiles, {
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {
   desc = "Telescope: Search buffer",
 })
-vim.keymap.set('n', '<leader>fq', builtin.quickfix, {
+vim.keymap.set('n', '<leader>cl', builtin.quickfix, {
   desc = "Telescope: Quickfix list",
 })
 vim.keymap.set('n', '<leader>ht', builtin.help_tags, {
