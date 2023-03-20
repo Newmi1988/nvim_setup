@@ -1,4 +1,5 @@
 {
+  "DAPInstall.nvim": { "branch": "main", "commit": "bbda2b062e5519cde4e10b6e4240d3dd1f867b20" },
   "LuaSnip": { "branch": "master", "commit": "a835e3d680c5940b61780c6af07885db95382478" },
   "auto-session": { "branch": "main", "commit": "1d3dd70a2d48e0f3441128eb4fb0b437a0bf2cc4" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
@@ -29,6 +30,7 @@
   "nvim": { "branch": "main", "commit": "128af65c3a23c94b324dc8d7f02a34feee8722d4" },
   "nvim-cmp": { "branch": "main", "commit": "777450fd0ae289463a14481673e26246b5e38bf2" },
   "nvim-dap": { "branch": "master", "commit": "7e81998e31277c7a33b6c34423640900c5c2c776" },
+  "nvim-dap-python": { "branch": "master", "commit": "65ccab83fb3d0b29ead6c765c1c52a1ed49592e8" },
   "nvim-dap-ui": { "branch": "master", "commit": "bdb94e3853d11b5ce98ec182e5a3719d5c0ef6fd" },
   "nvim-lint": { "branch": "master", "commit": "cadebae41e11610ba22a7c95dcf5ebc0f8af8f13" },
   "nvim-lspconfig": { "branch": "master", "commit": "5a871409199d585b52b69952532e3fb435e64566" },

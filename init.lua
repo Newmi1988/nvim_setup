@@ -205,6 +205,8 @@ require("lazy").setup({
   'mfussenegger/nvim-lint',
   -- DAG
   'mfussenegger/nvim-dap',
+  'mfussenegger/nvim-dap-python',
+  'Pocco81/DAPInstall.nvim',
   ---- neodev
   {
     'folke/neodev.nvim',
@@ -222,6 +224,9 @@ require("lazy").setup({
     requires = {
       "mfussenegger/nvim-dap",
     },
+    config = function ()
+      require("dapconfig")
+    end
   },
   -- Language Specific Plugins
   ---- Rust
