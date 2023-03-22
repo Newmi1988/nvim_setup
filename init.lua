@@ -206,7 +206,7 @@ require("lazy").setup({
   -- DAG
   'mfussenegger/nvim-dap',
   'mfussenegger/nvim-dap-python',
-  'Pocco81/DAPInstall.nvim',
+  'leoluz/nvim-dap-go',
   ---- neodev
   {
     'folke/neodev.nvim',

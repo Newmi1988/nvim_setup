@@ -3,10 +3,6 @@ local M = {}
 -- https://alpha2phi.medium.com/neovim-for-beginners-debugging-using-dap-44626a767f57
 
 local function configure()
-  local dap_install = require("dap-install")
-  dap_install.setup {
-    installation_path = vim.fn.stdpath "data" .. "/dapinstall/",
-  }
 
   local dap_breakpoint = {
     error = {
@@ -55,8 +51,7 @@ end
 local function configure_debuggers()
   require("dapconfig.lua").setup()
   require("dapconfig.python").setup()
-  require("dapconfig.rust").setup()
-  -- require("config.dap.go").setup()
+  require("dapconfig.go").setup()
 end
 
 function M.setup()
