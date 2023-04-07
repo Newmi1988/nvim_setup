@@ -104,7 +104,8 @@ require("lazy").setup({
   },
   -- Editor tools
   ---- Editorconfig plugin
-  'editorconfig/editorconfig-vim',
+  -- TODO: Remove when not needed any more
+  -- 'editorconfig/editorconfig-vim',
   ---- Toogle comments on lines
   'tpope/vim-commentary',
   ---- Show indentation line
