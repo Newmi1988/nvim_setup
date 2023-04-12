@@ -71,6 +71,7 @@ require("lazy").setup({
     },
     version = 'nightly'
   },
+  'xiyaowong/transparent.nvim',
   -- Sessions
   ---- auto session manager
   {
