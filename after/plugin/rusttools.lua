@@ -1,6 +1,11 @@
 local rt = require("rust-tools")
 local opts = { buffer = bufnr, remap = false }
 
+function add_description(table_to_update,description)
+  table_to_update["desc"] = description
+  return table_to_update
+end
+
 rt.setup({
   server = {
     on_attach = function(_, bufnr)
@@ -9,14 +14,30 @@ rt.setup({
       -- Code action groups
       vim.keymap.set("n", "<Leader>vag", rt.code_action_group.code_action_group, { buffer = bufnr })
       -- defaults
-      vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-      vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-      vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-      vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-      vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-      vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-      vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-      vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+      vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end,
+        add_description(opts, "RustTools: Description")
+      )
+      vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end,
+        add_description(opts, "RustTools: Query workplace Symbols")
+      )
+      vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end,
+        add_description(opts, "RustTools: View diagnostic")
+      )
+      vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end,
+        add_description(opts, "RustTools: Go to nex diagnostic")
+      )
+      vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end,
+        add_description(opts, "RustTools: Go to previous diagnostic")
+      )
+      vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end,
+        add_description(opts, "RustTools: Lsp buffer reference")
+      )
+      vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end,
+        add_description(opts, "RustTools: Lsp buffer rename")
+      )
+      vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end,
+        add_description(opts, "RustTools: Lsp buffer signature help")
+      )
     end,
     settings = {
       -- to enable rust-analyzer settings visit:
@@ -29,59 +50,46 @@ rt.setup({
       },
     },
   },
-  tools = { -- rust-tools options
+  tools = {
+            -- rust-tools options
 
     -- how to execute terminal commands
     -- options right now: termopen / quickfix
     executor = require("rust-tools.executors").termopen,
-
     -- callback to execute once rust-analyzer is done initializing the workspace
     -- The callback receives one parameter indicating the `health` of the server: "ok" | "warning" | "error"
     on_initialized = nil,
-
     -- automatically call RustReloadWorkspace when writing to a Cargo.toml file.
     reload_workspace_from_cargo_toml = true,
-
     -- These apply to the default RustSetInlayHints command
     inlay_hints = {
       -- automatically set inlay hints (type hints)
       -- default: true
       auto = true,
-
       -- Only show inlay hints for the current line
       only_current_line = false,
-
       -- whether to show parameter hints with the inlay hints or not
       -- default: true
       show_parameter_hints = true,
-
       -- prefix for parameter hints
       -- default: "<-"
       parameter_hints_prefix = "<- ",
-
       -- prefix for all the other hints (type, chaining)
       -- default: "=>"
       other_hints_prefix = "=> ",
-
       -- whether to align to the length of the longest line in the file
       max_len_align = false,
-
       -- padding from the left if max_len_align is true
       max_len_align_padding = 1,
-
       -- whether to align to the extreme right or not
       right_align = false,
-
       -- padding from the right if right_align is true
       right_align_padding = 7,
-
       -- The color of the hints
       highlight = "Comment",
     },
-
     -- options same as lsp hover / vim.lsp.util.open_floating_preview()
     hover_actions = {
-
       -- the border that is used for the hover window
       -- see vim.api.nvim_open_win()
       border = {
@@ -94,13 +102,10 @@ rt.setup({
         { "╰", "FloatBorder" },
         { "│", "FloatBorder" },
       },
-
       -- Maximal width of the hover window. Nil means no max.
       max_width = nil,
-
       -- Maximal height of the hover window. Nil means no max.
       max_height = nil,
-
       -- whether the hover action window gets automatically focused
       -- default: false
       auto_focus = true,

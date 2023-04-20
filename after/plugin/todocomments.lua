@@ -71,7 +71,12 @@ vim.keymap.set("n", "[t", function()
   require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
 
-vim.keymap.set("n", "<leader>tq", ":TodoQuickFix<CR>", { desc = "Todo: QuickFix List" })
-vim.keymap.set("n", "<leader>xt", ":TodoTrouble<CR>", { desc = "Todo: Trouble" })
-vim.keymap.set("n", "<leader>tt", ":TodoTelescope<CR>", { desc = "Todo: Telescope" })
-
+vim.keymap.set("n", "<leader>tq", ":TodoQuickFix<CR>", {
+  desc = "Todo: QuickFix List",
+})
+vim.keymap.set("n", "<leader>xt", ":TodoTrouble<CR>", {
+  desc = "Todo: Trouble",
+})
+vim.keymap.set("n", "<leader>tt", ":TodoTelescope<CR>", {
+  desc = "Todo: Telescope",
+})

@@ -65,9 +65,6 @@ require('gitsigns').setup {
     map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>', {
       desc = 'Gitsigns: Stage hunk',
     })
-    map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>', {
-      desc = 'Gitsigns: Stage hunk',
-    })
     map({ 'n', 'v' }, '<leader>hr', ':Gitsigns reset_hunk<CR>', {
       desc = 'Gitsigns: Reset hunk',
     })
