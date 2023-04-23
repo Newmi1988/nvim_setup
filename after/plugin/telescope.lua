@@ -59,6 +59,9 @@ vim.keymap.set('n', '<leader>gb', builtin.git_branches, {
 vim.keymap.set('n', '<leader>gs', builtin.git_stash, {
   desc = "Telescope: Git stashes",
 })
+vim.keymap.set('n', '<leader>gbc', builtin.git_bcommits, {
+  desc = "Telescope: Git Buffer git commits",
+})
 
 -- find colorschmes
 vim.keymap.set('n', '<leader>cs', builtin.colorscheme, {

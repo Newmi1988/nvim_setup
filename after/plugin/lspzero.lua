@@ -85,3 +85,14 @@ end)
 
 
 lsp.setup()
+
+local cmp = require('cmp')
+
+cmp.setup({
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  }
+})
+
+require('lspconfig.ui.windows').default_options.border = 'single'
