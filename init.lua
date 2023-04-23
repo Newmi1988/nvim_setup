@@ -203,6 +203,7 @@ require("lazy").setup({
       })
     end,
   },
+  "gbprod/yanky.nvim",
   -- Git Plugins
   ---- nvim git integration
   'tpope/vim-fugitive',
