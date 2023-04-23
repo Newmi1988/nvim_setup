@@ -203,6 +203,9 @@ require("lazy").setup({
       })
     end,
   },
+  -- Search and replace
+  'nvim-pack/nvim-spectre',
+  -- Circle yanked lines after input
   "gbprod/yanky.nvim",
   -- Git Plugins
   ---- nvim git integration
