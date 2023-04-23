@@ -122,10 +122,19 @@ require("lazy").setup({
       'nvim-lua/plenary.nvim'
     }
   },
+  {
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup({
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      })
+    end,
+  },
   -- Editor tools
-  ---- Editorconfig plugin
-  -- TODO: Remove when not needed any more
-  -- 'editorconfig/editorconfig-vim',
   ---- Toogle comments on lines
   'tpope/vim-commentary',
   ---- Show indentation line
@@ -253,3 +262,7 @@ autocmd('BufLeave', {
   pattern = 'term://*',
   command = 'stopinsert'
 })
+
+-- Fix for floating windows
+-- TODO: Check after neovim update if fixed
+vim.cmd("hi! link NormalFloat Normal")
