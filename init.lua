@@ -164,6 +164,8 @@ require("lazy").setup({
       })
     end
   },
+  -- tmux integration
+  'christoomey/vim-tmux-navigator',
   --  generate docstring
   {
     "danymat/neogen",
