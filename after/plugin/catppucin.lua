@@ -52,12 +52,12 @@ require("catppuccin").setup({
     lsp_saga = false,
     gitgutter = false,
     gitsigns = true,
-    leap = false,
+    leap = true,
     telescope = true,
     nvimtree = {
       enabled = true,
       show_root = true,
-      transparent_panel = false,
+      transparent_panel = true,
     },
     neotree = {
       enabled = false,
@@ -68,7 +68,7 @@ require("catppuccin").setup({
       enabled = false,
       enable_ui = false,
     },
-    which_key = false,
+    which_key = true,
     indent_blankline = {
       enabled = true,
       colored_indent_levels = false,
