@@ -122,6 +122,21 @@ require("lazy").setup({
   'tpope/vim-commentary',
   ---- Show indentation line
   'lukas-reineke/indent-blankline.nvim',
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {
+      exclude = {
+        filetypes = { 'help', 'nvimtree', 'dashboard', },
+        buftypes = {
+          'terminal',
+          'nofile',
+          'quickfix',
+          'prompt',
+        }
+      },
+    },
+  },
   ---- visualize undos
   'mbbill/undotree',
   ---- Multiline edit
