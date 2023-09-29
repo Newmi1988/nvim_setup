@@ -260,6 +260,15 @@ require("lazy").setup({
   },
   ------- Rust-Tools
   'simrat39/rust-tools.nvim',
+  "stevearc/dressing.nvim",
+  {
+  "ziontee113/icon-picker.nvim",
+  config = function()
+    require("icon-picker").setup({
+      disable_legacy_commands = true
+    })
+  end,
+  },
 })
 
 -- Terminal autocommands
