@@ -7,6 +7,7 @@
   "cmp_luasnip": { "branch": "master", "commit": "18095520391186d634a0045dacaa346291096566" },
   "crates.nvim": { "branch": "main", "commit": "04a06cee3fb9c584de4f5481eb4080bd6c759336" },
   "dashboard-nvim": { "branch": "master", "commit": "6b112d40ccf2a7aa6605ce325338c66612c4f7ec" },
+  "dial.nvim": { "branch": "master", "commit": "611cf5e84f655c96318b803785f89e3146d8e48f" },
   "diffview.nvim": { "branch": "main", "commit": "a111d19ccceac6530448d329c63f998f77b5626e" },
   "dressing.nvim": { "branch": "master", "commit": "73a7d54b5289000108c7f52402a36cf380fced67" },
   "flash.nvim": { "branch": "main", "commit": "0256d8ecab33a9aa69fdaaf885db22e1103e2a3a" },

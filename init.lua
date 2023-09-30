@@ -269,6 +269,7 @@ require("lazy").setup({
     })
   end,
   },
+  'monaqa/dial.nvim',
 })
 
 -- Terminal autocommands
