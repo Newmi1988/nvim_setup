@@ -1,6 +1,17 @@
 -- Treesitter Config
 require 'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "lua", "rust", "python", "javascript", "go" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = {
+    "c",
+    "lua",
+    "rust",
+    "python",
+    "javascript",
+    "go",
+    "regex",
+    "bash",
+    "markdown",
+    "markdown_inline",
+  }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true, -- false will disable the whole extension

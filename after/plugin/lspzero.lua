@@ -7,6 +7,11 @@ lsp.ensure_installed({
   'lua_ls',
   'pyright',
   'rust_analyzer',
+  'eslint',
+  'gopls',
+  'ocamllsp',
+  'ruff_lsp',
+  'yamlls',
 })
 
 local cmp = require('cmp')
@@ -97,3 +102,31 @@ local cmp = require('cmp')
 -- })
 
 require('lspconfig.ui.windows').default_options.border = 'single'
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+require('lspconfig').jsonls.setup {
+  capabilities = capabilities,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
+    },
+  },
+}
+
+require('lspconfig').yamlls.setup {
+  capabilities = capabilities,
+  settings = {
+    yaml = {
+      schemaStore = {
+        -- You must disable built-in schemaStore support if you want to use
+        -- this plugin and its advanced options like `ignore`.
+        enable = false,
+        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+        url = "",
+      },
+      schemas = require('schemastore').yaml.schemas(),
+    },
+  },
+}

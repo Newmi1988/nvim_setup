@@ -45,7 +45,7 @@ require("lazy").setup({
   ---- Todo comments
   {
     "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
   },
   ---- Startup dashboard
   {
@@ -58,7 +58,7 @@ require("lazy").setup({
   'nvim-lualine/lualine.nvim',
   ---- Icons
   {
-    'kyazdani42/nvim-web-devicons',
+    'https://github.com/nvim-tree/nvim-web-devicons.git',
     config = function()
       require('nvim-web-devicons').setup()
     end,
@@ -66,7 +66,7 @@ require("lazy").setup({
   -- File Manager
   {
     'nvim-tree/nvim-tree.lua',
-    requires = {
+    dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
     version = 'nightly'
@@ -82,7 +82,7 @@ require("lazy").setup({
     --     -- add any options here
     --   })
     -- end,
-    requires = {
+    dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
       -- OPTIONAL:
@@ -100,8 +100,7 @@ require("lazy").setup({
   ---- Telescope - Search everything
   {
     'nvim-telescope/telescope.nvim',
-    version = '0.1.1',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim'
     }
   },
@@ -190,7 +189,7 @@ require("lazy").setup({
   ---- split or join blocks
   {
     'Wansmer/treesj',
-    requires = { 'nvim-treesitter' },
+    dependencies = { 'nvim-treesitter' },
     config = function()
       require('treesj').setup({
         use_default_keymaps = true,
@@ -253,7 +252,7 @@ require("lazy").setup({
   {
     'saecki/crates.nvim',
     event = "BufEnter Cargo.toml",
-    requires = { { 'nvim-lua/plenary.nvim' } },
+    dependencies = { { 'nvim-lua/plenary.nvim' } },
     config = function()
       require('crates').setup()
     end,
@@ -270,6 +269,7 @@ require("lazy").setup({
   end,
   },
   'monaqa/dial.nvim',
+  "b0o/schemastore.nvim",
 })
 
 -- Terminal autocommands
