@@ -30,10 +30,10 @@ require("dashboard").setup({
         key = 'g',
       },
       {
-        desc = 'Restore Session',
+        desc = 'Mason',
         group = 'Number',
-        action = 'RestoreSession',
-        key = 'r',
+        action = 'Mason',
+        key = 'm',
       },
     },
   },
