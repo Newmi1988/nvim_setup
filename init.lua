@@ -261,15 +261,34 @@ require("lazy").setup({
   'simrat39/rust-tools.nvim',
   "stevearc/dressing.nvim",
   {
-  "ziontee113/icon-picker.nvim",
-  config = function()
-    require("icon-picker").setup({
-      disable_legacy_commands = true
-    })
-  end,
+    "ziontee113/icon-picker.nvim",
+    config = function()
+      require("icon-picker").setup({
+        disable_legacy_commands = true
+      })
+    end,
   },
   'monaqa/dial.nvim',
   "b0o/schemastore.nvim",
+  -- 'mfussenegger/nvim-dap',
+  {
+    "folke/neodev.nvim",
+    opts = {},
+  },
+  {
+    'mfussenegger/nvim-dap-python',
+    dependencies={
+      {"mfussenegger/nvim-dap"}
+    }
+  },
+  {'rcarriga/nvim-dap-ui',
+    dependencies={
+      {"mfussenegger/nvim-dap"}
+    },
+    config = function ()
+     require("dapui").setup()
+    end
+  },
 })
 
 -- Terminal autocommands
