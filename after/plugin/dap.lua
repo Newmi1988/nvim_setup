@@ -37,7 +37,7 @@ vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''
 -- Rust setup
 dap.adapters.lldb = {
   type = 'executable',
-  command = os.getenv('LLDV_VSCODE') .. '/lldb-vscode', -- adjust as needed, must be absolute path
+  command = os.getenv('LLDB_VSCODE'), -- adjust as needed, must be absolute path
   name = 'lldb'
 }
 

@@ -9,7 +9,6 @@ lsp.ensure_installed({
   'rust_analyzer',
   'eslint',
   'gopls',
-  'ocamllsp',
   'ruff_lsp',
   'yamlls',
 })
