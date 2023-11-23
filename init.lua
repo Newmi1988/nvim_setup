@@ -1,9 +1,4 @@
 require('newmi1988')
-
-local fn = vim.fn
-local g = vim.g
-local opt = vim.opt
-
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -289,6 +284,7 @@ require("lazy").setup({
      require("dapui").setup()
     end
   },
+  'David-Kunz/gen.nvim',
 })
 
 -- Terminal autocommands
