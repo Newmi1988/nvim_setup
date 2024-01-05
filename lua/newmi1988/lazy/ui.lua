@@ -19,7 +19,6 @@ return {
         local function opts(desc)
           return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
         end
-        
         -- Default mappings. Feel free to modify or remove as you wish.
         --
         -- BEGIN_DEFAULT_ON_ATTACH
@@ -97,10 +96,9 @@ return {
       vim.cmd("autocmd Colorscheme * highlight NvimTreeNormal guibg=none guifg=#9da5b3")
 
 
-      vim.api.nvim_set_keymap('n', '<C-B>', ':NvimTreeToggle<CR>', 
+      vim.api.nvim_set_keymap('n', '<C-B>', ':NvimTreeToggle<CR>',
         { noremap = true, silent = true , desc="Nvim Tree toggle"}
       )
-      
     end
   },
   ---- Colored brackets

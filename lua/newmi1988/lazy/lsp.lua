@@ -149,9 +149,6 @@ return {
 
 
       lsp.setup()
-
-      local cmp = require('cmp')
-
       -- enable border on command auto completion
       -- cmp.setup({
       --   window = {
@@ -189,7 +186,6 @@ return {
           },
         },
       }
-      
     end
   },
   ---- diagnostics collector

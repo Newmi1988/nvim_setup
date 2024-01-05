@@ -21,17 +21,17 @@ return {
         add_description(opts, "Crates: Relead")
       )
 
-      vim.keymap.set('n', '<leader>cv', crates.show_versions_popup, 
+      vim.keymap.set('n', '<leader>cv', crates.show_versions_popup,
        add_description(opts,"Crates: Show version popup")
       )
-      vim.keymap.set('n', '<leader>cf', crates.show_features_popup, 
+      vim.keymap.set('n', '<leader>cf', crates.show_features_popup,
         add_description(opts,"Crates: Show feature popup")
       )
-      vim.keymap.set('n', '<leader>cd', crates.show_dependencies_popup, 
+      vim.keymap.set('n', '<leader>cd', crates.show_dependencies_popup,
         add_description(opts,"Crates: Show dependencies popup")
       )
       -- Updates
-      vim.keymap.set('n', '<leader>cu', crates.update_crate, 
+      vim.keymap.set('n', '<leader>cu', crates.update_crate,
         add_description(opts,"Crates: Update crate")
       )
       vim.keymap.set('v', '<leader>cu', crates.update_crates,
