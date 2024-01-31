@@ -2,6 +2,8 @@ return {
   -- Editor tools
   ---- Toogle comments on lines
   'tpope/vim-commentary',
+  ---- Surround word with parenteses
+  'tpope/vim-surround',
   ---- visualize undos
   {
     'mbbill/undotree',
