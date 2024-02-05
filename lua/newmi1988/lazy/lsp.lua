@@ -38,12 +38,17 @@ return {
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
   ----------Autocompletion
-  'hrsh7th/nvim-cmp',
-  'hrsh7th/cmp-buffer',
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-nvim-lsp',
+    }
+  },
   'hrsh7th/cmp-path',
-  'saadparwaiz1/cmp_luasnip',
-  'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-nvim-lua',
+  'hrsh7th/cmp-cmdline',
+  'saadparwaiz1/cmp_luasnip',
   ----------  Snippets
   'L3MON4D3/LuaSnip',
   'rafamadriz/friendly-snippets',
@@ -72,6 +77,28 @@ return {
         ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
         ["<C-Space>"] = cmp.mapping.complete(),
+      })
+      -- `/` cmdline setup.
+      cmp.setup.cmdline('/', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
+      })
+
+      -- `:` cmdline setup.
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'path' }
+        }, {
+          {
+            name = 'cmdline',
+            option = {
+              ignore_cmds = { 'Man', '!' }
+            }
+          }
+        })
       })
 
 
