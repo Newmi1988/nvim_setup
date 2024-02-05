@@ -32,6 +32,8 @@ return {
 
       require("notify").setup({
         background_colour = "#000000",
+        render = 'compact',
+        timeout = 1500,
       })
     end
   },
