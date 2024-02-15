@@ -249,5 +249,9 @@ return {
         end,
       })
     end
-  }
+  },
+  {
+    "folke/neodev.nvim",
+    opts = {},
+  },
 }

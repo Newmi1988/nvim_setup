@@ -1,14 +1,23 @@
 return {
   {
-    "folke/neodev.nvim",
-    opts = {},
-  },
-  {
     'mfussenegger/nvim-dap-python',
     dependencies = {
-      { "mfussenegger/nvim-dap" }
+      {
+        "mfussenegger/nvim-dap",
+        "jay-babu/mason-nvim-dap.nvim",
+      }
     },
     config = function()
+      -- mason plugin to install tools
+      require("mason-nvim-dap").setup({
+          ensure_installed = {
+            "codelldb",
+            "debugpy",
+            "go-debug-adapter",
+          }
+      })
+
+      -- dap configureation
       local dap = require('dap')
 
       vim.keymap.set("n", "<leader>dc", function()
