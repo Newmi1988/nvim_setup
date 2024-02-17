@@ -101,7 +101,6 @@ return {
     end
   },
   ---- Colored brackets
-  -- 'p00f/nvim-ts-rainbow',
   {
     'HiPhish/rainbow-delimiters.nvim',
     config = function()
@@ -444,7 +443,7 @@ return {
         },
         sections = {
           lualine_a = { 'mode' },
-          lualine_b = { 'branch', 'diff', 'diagnostics' },
+          lualine_b = { 'diff', 'diagnostics' },
           lualine_c = { 'filename' },
           lualine_x = { 'encoding', 'fileformat', 'filetype' },
           lualine_y = { 'progress' },
@@ -510,5 +509,19 @@ return {
         }
       )
     end
-  }
+  },
+  {
+  'stevearc/aerial.nvim',
+  config = function ()
+    require("aerial").setup({
+    -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+    on_attach = function(bufnr)
+      -- Jump forwards/backwards with '{' and '}'
+      vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+      vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+    end,
+    })
+    vim.keymap.set("n", "<leader>so", "<cmd>AerialToggle!<CR>")
+  end
+  },
 }
