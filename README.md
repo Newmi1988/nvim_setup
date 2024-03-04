@@ -11,4 +11,5 @@ Personal Nvim Config.
 Given you have the dependencies this setup should bootstrap itself.
 It uses [lazy.nvim](https://github.com/folke/lazy.nvim) to install plugins.
 
-
+## Screenshot
+![Nvim Screenshot](./.media/nvim.png)
