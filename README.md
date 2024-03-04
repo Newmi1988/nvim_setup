@@ -1,5 +1,8 @@
-# nvim_setup
-Personal Nvim Config. 
+# Newmi1988 Neovim Config
+My personal neovim config. Far from minimalistic. I experiment with all kinds of plugins.
+
+## Screenshot
+![Nvim Screenshot](./.media/nvim.png)
 
 ## dependencies
 1. git
@@ -7,9 +10,27 @@ Personal Nvim Config.
 3. [ripgrep](https://github.com/BurntSushi/ripgrep) for blazingly fast grep like search
 4. [Node.js](https://github.com/nodejs/node) for LSPs
 
+## Packages
+### Most used 🛠️
+The most used are probably the following:
+- [telescope](https://github.com/nvim-telescope/telescope.nvim)
+- [fzf.vim](https://github.com/junegunn/fzf.vim)
+- [fugitive](https://github.com/tpope/vim-fugitive)
+- [diffview](https://github.com/sindrets/diffview.nvim)
+- [undotree](https://github.com/mbbill/undotree)
+
+### Theme + Styling 🎨
+- Colortheme and Code Style: [catppuccin](https://github.com/catppuccin/nvim)
+- Outlines: [aerial](https://github.com/stevearc/aerial.nvim)
+- Statusline: [lualine](https://github.com/nvim-lualine/lualine.nvim) 
+- Indent Line: [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
+- Rainbow Stuff: [rainbow-delimiters](https://gitlab.com/HiPhish/rainbow-delimiters.nvim)
+
+### Cool stuff 🎉🎊
+- [Noice](https://github.com/folke/noice.nvim) 
+- [todo-comments](https://github.com/folke/todo-comments.nvim) 
+- [Trouble](https://github.com/folke/trouble.nvim)
+
 ## Install
 Given you have the dependencies this setup should bootstrap itself.
 It uses [lazy.nvim](https://github.com/folke/lazy.nvim) to install plugins.
-
-## Screenshot
-![Nvim Screenshot](./.media/nvim.png)

@@ -470,7 +470,6 @@ return {
     end,
   },
   ---- Show indentation line
-  'lukas-reineke/indent-blankline.nvim',
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
