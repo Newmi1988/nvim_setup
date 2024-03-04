@@ -11,13 +11,19 @@ My personal neovim config. Far from minimalistic. I experiment with all kinds of
 4. [Node.js](https://github.com/nodejs/node) for LSPs
 
 ## Packages
-### Most used 🛠️
+There are a ton of plugins in my config.
+Some are rearly used but others all the time.
+### Most productive use 🛠️
 The most used are probably the following:
 - [telescope](https://github.com/nvim-telescope/telescope.nvim)
 - [fzf.vim](https://github.com/junegunn/fzf.vim)
 - [fugitive](https://github.com/tpope/vim-fugitive)
 - [diffview](https://github.com/sindrets/diffview.nvim)
 - [undotree](https://github.com/mbbill/undotree)
+- [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
+- [flash](https://github.com/folke/flash.nvim)
+- [treesj](https://github.com/Wansmer/treesj)
+
 
 ### Theme + Styling 🎨
 - Colortheme and Code Style: [catppuccin](https://github.com/catppuccin/nvim)
