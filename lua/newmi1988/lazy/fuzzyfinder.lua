@@ -15,6 +15,9 @@ return {
       vim.api.nvim_set_keymap('n', '<C-g>', ':Rg<CR>',
         { noremap = true, silent = true, desc = "fzf: ripgrep" }
       )
+      vim.api.nvim_set_keymap('n', '<leader>bl', ':BLines<CR>',
+        { noremap = true, silent = true, desc = "fzf: ripgrep" }
+      )
     end
   },
   ---- Telescope - Search everything
