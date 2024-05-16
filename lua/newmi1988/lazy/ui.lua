@@ -183,8 +183,8 @@ return {
           TODO = { icon = " ", color = "info" },
           HACK = { icon = " ", color = "warning" },
           WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-          PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-          NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+          PERF = { icon = "💤", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+          NOTE = { icon = "ℹ︎", color = "hint", alt = { "INFO" } },
           TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
         },
         gui_style = {
@@ -266,13 +266,13 @@ return {
           },
           shortcut = {
             {
-              desc = ' Update',
+              desc = '⇪ Update',
               group = '@property',
               action = 'Lazy update',
               key = 'u'
             },
             {
-              desc = ' Files',
+              desc = '  Files',
               group = 'Label',
               action = 'Telescope find_files',
               key = 'f',
