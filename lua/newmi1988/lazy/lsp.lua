@@ -169,14 +169,6 @@ return {
 
 
       lsp.setup()
-      -- enable border on command auto completion
-      -- cmp.setup({
-      --   window = {
-      --     completion = cmp.config.window.bordered(),
-      --     documentation = cmp.config.window.bordered(),
-      --   }
-      -- })
-
       require('lspconfig.ui.windows').default_options.border = 'single'
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
