@@ -91,12 +91,24 @@ return {
 
       local cmp = require('cmp')
       local cmp_format = lsp_zero.cmp_format()
-      local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
+      require('luasnip.loaders.from_vscode').lazy_load()
+
 
       cmp.setup({
+        preselect = cmp.PreselectMode.None,
+        completion = {
+          completeopt = 'menu,menuone,preview',
+        },
         formatting = cmp_format,
+        sources = {
+          { name = 'buffer' },
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+        },
         mapping = cmp.mapping.preset.insert({
-          ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+          ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
           ['<C-Space>'] = cmp.mapping.complete(),
           -- scroll up and down the documentation window
           ['<C-u>'] = cmp.mapping.scroll_docs(-4),
@@ -121,10 +133,6 @@ return {
             require('luasnip').lsp_expand(args.body)
           end,
         },
-        sources = {
-          { name = 'buffer' },
-          { name = 'nvim_lsp' },
-        }
       })
 
       -- `/` cmdline setup.
