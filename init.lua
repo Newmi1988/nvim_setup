@@ -29,7 +29,3 @@ autocmd('BufLeave', {
   pattern = 'term://*',
   command = 'stopinsert'
 })
-
--- Fix for floating windows
--- TODO: Check after neovim update if fixed
-vim.cmd("hi! link NormalFloat Normal")
