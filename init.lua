@@ -29,3 +29,9 @@ autocmd('BufLeave', {
   pattern = 'term://*',
   command = 'stopinsert'
 })
+
+-- fix for telescope transparency
+-- TODO: Check if needed in the future
+local cmd = vim.cmd
+cmd 'highlight TelescopeBorder guibg=none'
+cmd 'highlight TelescopeTitle guibg=none'
