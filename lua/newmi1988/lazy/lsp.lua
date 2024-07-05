@@ -4,7 +4,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    config = function ()
+    config = function()
       -- Treesitter Config
       require 'nvim-treesitter.configs'.setup {
         ensure_installed = {
@@ -19,11 +19,11 @@ return {
           "markdown",
           "markdown_inline",
           "vimdoc"
-        }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+        },                   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
         ignore_install = {}, -- List of parsers to ignore installing
         highlight = {
-          enable = true, -- false will disable the whole extension
-          disable = {}, -- list of language that will be disabled
+          enable = true,     -- false will disable the whole extension
+          disable = {},      -- list of language that will be disabled
           -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
           -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
           -- Using this option may slow down your editor, and you may see some duplicate highlights.
@@ -55,30 +55,78 @@ return {
   'rafamadriz/friendly-snippets',
   {
     'VonHeikemen/lsp-zero.nvim',
-    config = function ()
-      local lsp = require("lsp-zero")
+    branch = 'v3.x',
+    config = function()
+      local lsp_zero = require("lsp-zero")
+      lsp_zero.extend_lspconfig()
 
-      lsp.preset("recommended")
+      lsp_zero.preset("recommended")
 
-      lsp.ensure_installed({
-        'tsserver',
-        'lua_ls',
-        'pyright',
-        'rust_analyzer',
-        'eslint',
-        'gopls',
-        'ruff_lsp',
-        'yamlls',
+      require('mason').setup({})
+      require('mason-lspconfig').setup({
+        ensure_installed = {
+          'tsserver',
+          'lua_ls',
+          'pyright',
+          'rust_analyzer',
+          'eslint',
+          'gopls',
+          'ruff_lsp',
+          'yamlls',
+        },
+        handlers = {
+          -- this first function is the "default handler"
+          -- it applies to every language server without a "custom handler"
+          function(server_name)
+            require('lspconfig')[server_name].setup({})
+          end,
+
+          -- this is the "custom handler" for `lua_ls`
+          lua_ls = function()
+            local lua_opts = lsp_zero.nvim_lua_ls()
+            require('lspconfig').lua_ls.setup(lua_opts)
+          end,
+        }
       })
 
       local cmp = require('cmp')
+      local cmp_format = lsp_zero.cmp_format()
       local cmp_select = { behavior = cmp.SelectBehavior.Select }
-      local cmp_mappings = lsp.defaults.cmp_mappings({
-        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ["<C-Space>"] = cmp.mapping.complete(),
+
+      cmp.setup({
+        formatting = cmp_format,
+        mapping = cmp.mapping.preset.insert({
+          ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          -- scroll up and down the documentation window
+          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-d>'] = cmp.mapping.scroll_docs(4),
+          ['<C-p>'] = cmp.mapping(function()
+            if cmp.visible() then
+              cmp.select_prev_item({ behavior = 'insert' })
+            else
+              cmp.complete()
+            end
+          end),
+          ['<C-n>'] = cmp.mapping(function()
+            if cmp.visible() then
+              cmp.select_next_item({ behavior = 'insert' })
+            else
+              cmp.complete()
+            end
+          end),
+        }),
+        snippet = {
+          expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+          end,
+        },
+        sources = {
+          { name = 'buffer' },
+          { name = 'nvim_lsp' },
+        }
       })
+
       -- `/` cmdline setup.
       cmp.setup.cmdline('/', {
         mapping = cmp.mapping.preset.cmdline(),
@@ -103,11 +151,7 @@ return {
       })
 
 
-      lsp.setup_nvim_cmp({
-        mapping = cmp_mappings
-      })
-
-      lsp.set_preferences({
+      lsp_zero.set_preferences({
         suggest_lsp_servers = false,
         sign_icons = {
           error = 'E',
@@ -126,49 +170,50 @@ return {
         return table_to_update
       end
 
-      lsp.on_attach(function(client, bufnr)
+      lsp_zero.on_attach(function(client, bufnr)
         local opts = { buffer = bufnr, remap = false }
 
         vim.keymap.set("n", "K", function()
           vim.lsp.buf.hover()
-        end, add_description(opts,"Lsp: Hover description")
+        end, add_description(opts, "Lsp: Hover description")
         )
         vim.keymap.set("n", "<leader>vws", function()
           vim.lsp.buf.workspace_symbol()
-        end, add_description(opts,"Lsp: Query workspace symbol")
+        end, add_description(opts, "Lsp: Query workspace symbol")
         )
         vim.keymap.set("n", "<leader>vd", function()
           vim.diagnostic.open_float()
-        end, add_description(opts,"Lsp: View diagnostics")
+        end, add_description(opts, "Lsp: View diagnostics")
         )
         vim.keymap.set("n", "[d", function()
           vim.diagnostic.goto_next()
-        end, add_description(opts,"Lsp: Go next")
+        end, add_description(opts, "Lsp: Go next")
         )
         vim.keymap.set("n", "]d", function()
           vim.diagnostic.goto_prev()
-        end, add_description(opts,"Lsp: Go prev")
+        end, add_description(opts, "Lsp: Go prev")
         )
         vim.keymap.set("n", "<leader>vca", function()
           vim.lsp.buf.code_action()
-        end, add_description(opts,"Lsp: View code actions")
+        end, add_description(opts, "Lsp: View code actions")
         )
         vim.keymap.set("n", "<leader>vrr", function()
           vim.lsp.buf.references()
-        end, add_description(opts,"Lsp: References")
+        end, add_description(opts, "Lsp: References")
         )
         vim.keymap.set("n", "<leader>vrn", function()
           vim.lsp.buf.rename()
-        end, add_description(opts,"Lsp: Rename")
+        end, add_description(opts, "Lsp: Rename")
         )
         vim.keymap.set("i", "<C-h>", function()
           vim.lsp.buf.signature_help()
-        end, add_description(opts,"Lsp: Signature help")
+        end, add_description(opts, "Lsp: Signature help")
         )
       end)
 
 
-      lsp.setup()
+      lsp_zero.setup()
+
       require('lspconfig.ui.windows').default_options.border = 'single'
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -203,7 +248,7 @@ return {
   ---- diagnostics collector
   {
     'folke/trouble.nvim',
-    config = function ()
+    config = function()
       require("trouble").setup({})
 
       -- Lua
@@ -230,7 +275,7 @@ return {
   -- linter plugin
   {
     'mfussenegger/nvim-lint',
-    config = function ()
+    config = function()
       require('lint').linters_by_ft = {
         dockerfile = { 'hadolint', },
         python = { 'ruff', },

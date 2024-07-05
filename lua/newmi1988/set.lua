@@ -41,3 +41,8 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
+vim.opt.ignorecase = true -- search case insensitive
+vim.opt.smartcase = true -- search matters if capital letter
+vim.opt.inccommand = "split" -- "for incsearch while sub
+vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }

@@ -58,3 +58,20 @@ vim.api.nvim_set_keymap('n', '<leader>cln', ':cnext<CR>',
 vim.api.nvim_set_keymap('n', '<leader>clp', ':cprevious<CR>',
   { noremap = true, silent = true , desc='Previous quickfix item'}
 )
+
+function SpellToggle()
+    if vim.opt.spell:get() then
+        vim.opt_local.spell = false
+        vim.opt_local.spelllang = "en"
+    else
+        vim.opt_local.spell = true
+        vim.opt_local.spelllang = {"en_us"}
+    end
+end
+
+vim.api.nvim_set_keymap("n", "<leader>sc", ":lua SpellToggle()<cr>",
+  { noremap = true, silent = true , desc='Spellcheck: Toggle on/off'}
+)
+vim.api.nvim_set_keymap("n", "<leader>z", "[s1z=``",
+  { noremap = true, silent = true , desc='Spellcheck: Replace word with first suggestion'}
+)

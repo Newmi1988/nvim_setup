@@ -451,4 +451,31 @@ return {
       -- refer to the configuration section below
     }
   },
+  {
+    {
+      'akinsho/toggleterm.nvim',
+      version = "*",
+      -- config = function ()
+      --   vim.keymap.set("n", "<leader><leader>", "<cmd>ToggleTerm<CR>",
+      --     {
+      --       silent = true,
+      --       noremap = true,
+      --       desc = "ToggleTerm: Open/Close terminal",
+      --     }
+      --   )
+      -- end,
+      opts = {
+        size = 90,
+        shade_terminals = false,
+        direction = 'vertical',
+        vim.keymap.set("n", "<leader><leader>", "<cmd>ToggleTerm<CR>",
+          {
+            silent = true,
+            noremap = true,
+            desc = "ToggleTerm: Open/Close terminal",
+          }
+        )
+      }
+    }
+  },
 }
