@@ -1,2 +1,1 @@
-require("newmi1988.set")
-require("newmi1988.remaps")
+../../../../.dotfiles/.config/nvim/lua/newmi1988/init.lua

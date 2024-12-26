@@ -1,3 +1,1 @@
-return {
-  "b0o/schemastore.nvim",
-}
+../../../../../.dotfiles/.config/nvim/lua/newmi1988/lazy/validation.lua
