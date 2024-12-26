@@ -1,1 +1,4 @@
-../../../../../.dotfiles/.config/nvim/lua/newmi1988/lazy/init.lua
+return {
+  ---- utils (dependencies for many plugins)
+  'nvim-lua/plenary.nvim',
+}
