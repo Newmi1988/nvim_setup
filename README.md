@@ -33,7 +33,6 @@ The most used are probably the following:
 - Rainbow Stuff: [rainbow-delimiters](https://gitlab.com/HiPhish/rainbow-delimiters.nvim)
 
 ### Cool stuff 🎉🎊
-- [Noice](https://github.com/folke/noice.nvim) 
 - [todo-comments](https://github.com/folke/todo-comments.nvim) 
 - [Trouble](https://github.com/folke/trouble.nvim)
 

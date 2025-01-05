@@ -22,55 +22,55 @@ return {
       )
 
       vim.keymap.set('n', '<leader>cv', crates.show_versions_popup,
-       add_description(opts,"Crates: Show version popup")
+        add_description(opts, "Crates: Show version popup")
       )
       vim.keymap.set('n', '<leader>cf', crates.show_features_popup,
-        add_description(opts,"Crates: Show feature popup")
+        add_description(opts, "Crates: Show feature popup")
       )
       vim.keymap.set('n', '<leader>cd', crates.show_dependencies_popup,
-        add_description(opts,"Crates: Show dependencies popup")
+        add_description(opts, "Crates: Show dependencies popup")
       )
       -- Updates
       vim.keymap.set('n', '<leader>cu', crates.update_crate,
-        add_description(opts,"Crates: Update crate")
+        add_description(opts, "Crates: Update crate")
       )
       vim.keymap.set('v', '<leader>cu', crates.update_crates,
-        add_description(opts,"Crates: Update selected crates")
+        add_description(opts, "Crates: Update selected crates")
       )
       vim.keymap.set('n', '<leader>ca', crates.update_all_crates,
-        add_description(opts,"Crates: Update all crates")
+        add_description(opts, "Crates: Update all crates")
       )
       vim.keymap.set('n', '<leader>cU', crates.upgrade_crate,
-        add_description(opts,"Crates: Upgrade crate")
+        add_description(opts, "Crates: Upgrade crate")
       )
       vim.keymap.set('v', '<leader>cU', crates.upgrade_crates,
-        add_description(opts,"Crates: Upgrade selected crates")
+        add_description(opts, "Crates: Upgrade selected crates")
       )
       vim.keymap.set('n', '<leader>cA', crates.upgrade_all_crates,
-        add_description(opts,"Crates: Upgrade all crates")
+        add_description(opts, "Crates: Upgrade all crates")
       )
       vim.keymap.set('n', '<leader>cH', crates.open_homepage,
-        add_description(opts,"Crates: Open homepage")
+        add_description(opts, "Crates: Open homepage")
       )
       vim.keymap.set('n', '<leader>cR', crates.open_repository,
-        add_description(opts,"Crates: Open repository")
+        add_description(opts, "Crates: Open repository")
       )
       vim.keymap.set('n', '<leader>cD', crates.open_documentation,
-        add_description(opts,"Crates: Open documentation")
+        add_description(opts, "Crates: Open documentation")
       )
       vim.keymap.set('n', '<leader>cC', crates.open_crates_io,
-        add_description(opts,"Crates: Open crates.io")
+        add_description(opts, "Crates: Open crates.io")
       )
     end,
   },
   ------- Rust-Tools
   {
     'simrat39/rust-tools.nvim',
-    config = function ()
+    config = function()
       local rt = require("rust-tools")
       local opts = { buffer = bufnr, remap = false }
 
-      function add_description(table_to_update,description)
+      function add_description(table_to_update, description)
         table_to_update["desc"] = description
         return table_to_update
       end
@@ -108,19 +108,10 @@ return {
               add_description(opts, "RustTools: Lsp buffer signature help")
             )
           end,
-          settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-              -- enable clippy on save
-              checkOnSave = {
-                command = "clippy",
-              },
-            },
-          },
+          settings = {},
         },
         tools = {
-                  -- rust-tools options
+          -- rust-tools options
 
           -- how to execute terminal commands
           -- options right now: termopen / quickfix

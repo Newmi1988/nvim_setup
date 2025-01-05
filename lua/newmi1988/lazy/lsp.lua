@@ -65,13 +65,11 @@ return {
       require('mason').setup({})
       require('mason-lspconfig').setup({
         ensure_installed = {
-          'tsserver',
           'lua_ls',
           'pyright',
           'rust_analyzer',
           'eslint',
           'gopls',
-          'ruff_lsp',
           'yamlls',
         },
         handlers = {
