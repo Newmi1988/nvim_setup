@@ -28,9 +28,9 @@ The most used are probably the following:
 ### Theme + Styling 🎨
 - Colortheme and Code Style: [catppuccin](https://github.com/catppuccin/nvim)
 - Outlines: [aerial](https://github.com/stevearc/aerial.nvim)
-- Statusline: [lualine](https://github.com/nvim-lualine/lualine.nvim) 
 - Indent Line: [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
 - Rainbow Stuff: [rainbow-delimiters](https://gitlab.com/HiPhish/rainbow-delimiters.nvim)
+- Breadcrumps: [dropbar](https://github.com/Bekaboo/dropbar.nvim)
 
 ### Cool stuff 🎉🎊
 - [todo-comments](https://github.com/folke/todo-comments.nvim) 
