@@ -6,8 +6,9 @@ g.mapleader = " "
 cmd 'syntax on'
 cmd 'set number'
 cmd 'set relativenumber'
+cmd 'set spell spelllang=en_us'
 
--- autocomplete options
+-- auto complete options
 -- " Set completeopt to have a better completion experience
 cmd 'set completeopt=menuone,noinsert,noselect'
 -- " Avoid showing message extra message when using completion

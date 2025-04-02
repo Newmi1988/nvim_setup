@@ -171,7 +171,7 @@ return {
         virtual_text = true,
       })
 
-      function add_description(table_to_update, description)
+      local function add_description(table_to_update, description)
         table_to_update["desc"] = description
         return table_to_update
       end
@@ -192,11 +192,11 @@ return {
         end, add_description(opts, "Lsp: View diagnostics")
         )
         vim.keymap.set("n", "[d", function()
-          vim.diagnostic.goto_next()
+          vim.diagnostic.jump({count = 1})
         end, add_description(opts, "Lsp: Go next")
         )
         vim.keymap.set("n", "]d", function()
-          vim.diagnostic.goto_prev()
+          vim.diagnostic.jump({count = -1})
         end, add_description(opts, "Lsp: Go prev")
         )
         vim.keymap.set("n", "<leader>vca", function()
