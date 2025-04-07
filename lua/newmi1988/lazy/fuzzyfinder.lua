@@ -87,9 +87,8 @@ return {
       vim.keymap.set('n', '<leader>gbc', builtin.git_bcommits, {
         desc = "Telescope: Git Buffer git commits",
       })
-      -- find colorschmes
-      vim.keymap.set('n', '<leader>cs', builtin.colorscheme, {
-        desc = "Telescope: Colorscheme",
+      vim.keymap.set('n', '<leader>co', builtin.colorscheme, {
+        desc = "Telescope: Choose colorschme",
       })
 
       vim.keymap.set('n', '<leader>km', builtin.keymaps, {
