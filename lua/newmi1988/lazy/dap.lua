@@ -10,11 +10,11 @@ return {
     config = function()
       -- mason plugin to install tools
       require("mason-nvim-dap").setup({
-          ensure_installed = {
-            "codelldb",
-            "debugpy",
-            "go-debug-adapter",
-          }
+        ensure_installed = {
+          "codelldb",
+          "debugpy",
+          "go-debug-adapter",
+        }
       })
 
       -- dap configureation
@@ -152,12 +152,13 @@ return {
       {
         "mfussenegger/nvim-dap",
         "nvim-neotest/nvim-nio",
+        "folke/lazydev.nvim",
       }
     },
     config = function()
       require("dapui").setup()
-      require("neodev").setup({
-        library = { plugins = { "nvim-dap-ui" }, types = true },
+      require("lazydev").setup({
+        library = { "nvim-dap-ui" },
       })
 
       local dap, dapui = require("dap"), require("dapui")

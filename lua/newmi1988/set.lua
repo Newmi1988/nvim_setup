@@ -7,6 +7,8 @@ cmd 'syntax on'
 cmd 'set number'
 cmd 'set relativenumber'
 cmd 'set spell spelllang=en_us'
+cmd 'au TermOpen * setlocal nospell'
+cmd 'au BufEnter *.yaml setlocal nospell'
 
 -- auto complete options
 -- " Set completeopt to have a better completion experience
