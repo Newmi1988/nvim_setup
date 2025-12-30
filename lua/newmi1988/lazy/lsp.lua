@@ -1,5 +1,69 @@
 return {
   -- Lsp
+  {
+    "mason-org/mason-lspconfig.nvim",
+    opts = {},
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
+  },
+  -- completions
+  {
+    'saghen/blink.cmp',
+    -- optional: provides snippets for the snippet source
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+      'L3MON4D3/LuaSnip',
+    },
+
+    -- use a release tag to download pre-built binaries
+    version = '1.*',
+    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
+    -- If you use nix, you can build from source using latest nightly rust with:
+    -- build = 'nix run .#build-plugin',
+
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+      -- 'super-tab' for mappings similar to vscode (tab to accept)
+      -- 'enter' for enter to accept
+      -- 'none' for no mappings
+      --
+      -- All presets have the following mappings:
+      -- C-space: Open menu or open docs if already open
+      -- C-n/C-p or Up/Down: Select next/previous item
+      -- C-e: Hide menu
+      -- C-k: Toggle signature help (if signature.enabled = true)
+      --
+      -- See :h blink-cmp-config-keymap for defining your own keymap
+      keymap = { preset = 'default' },
+
+      appearance = {
+        -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+        -- Adjusts spacing to ensure icons are aligned
+        nerd_font_variant = 'mono'
+      },
+
+      -- (Default) Only show the documentation popup when manually triggered
+      completion = { documentation = { auto_show = false } },
+
+      -- Default list of enabled providers defined so that you can extend it
+      -- elsewhere in your config, without redefining it, due to `opts_extend`
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+
+      -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+      -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+      -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+      --
+      -- See the fuzzy documentation for more information
+      fuzzy = { implementation = "prefer_rust_with_warning" }
+    },
+  },
   ---- general tokenizer and language parser (api for treesitter)
   {
     'nvim-treesitter/nvim-treesitter',
@@ -34,223 +98,6 @@ return {
     end
   },
   'nvim-treesitter/nvim-treesitter-context',
-  ---- LSP Support
-  'neovim/nvim-lspconfig',
-  'williamboman/mason.nvim',
-  'williamboman/mason-lspconfig.nvim',
-  ----------Autocompletion
-  {
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-nvim-lsp',
-    }
-  },
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-nvim-lua',
-  'hrsh7th/cmp-cmdline',
-  'saadparwaiz1/cmp_luasnip',
-  ----------  Snippets
-  'L3MON4D3/LuaSnip',
-  'rafamadriz/friendly-snippets',
-  {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v3.x',
-    config = function()
-      local lsp_zero = require("lsp-zero")
-      lsp_zero.extend_lspconfig()
-
-      lsp_zero.preset("recommended")
-
-      require('mason').setup({})
-      require('mason-lspconfig').setup({
-        ensure_installed = {
-          'lua_ls',
-          'pyright',
-          'rust_analyzer',
-          'eslint',
-          'gopls',
-          'yamlls',
-        },
-        handlers = {
-          -- this first function is the "default handler"
-          -- it applies to every language server without a "custom handler"
-          function(server_name)
-            require('lspconfig')[server_name].setup({})
-          end,
-
-          -- this is the "custom handler" for `lua_ls`
-          lua_ls = function()
-            local lua_opts = lsp_zero.nvim_lua_ls()
-            require('lspconfig').lua_ls.setup(lua_opts)
-          end,
-        }
-      })
-
-      local cmp = require('cmp')
-      local cmp_format = lsp_zero.cmp_format()
-
-      require('luasnip.loaders.from_vscode').lazy_load()
-
-
-      cmp.setup({
-        preselect = cmp.PreselectMode.None,
-        completion = {
-          completeopt = 'menu,menuone,preview',
-        },
-        formatting = cmp_format,
-        sources = {
-          { name = 'buffer' },
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-        },
-        mapping = cmp.mapping.preset.insert({
-          ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          -- scroll up and down the documentation window
-          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-d>'] = cmp.mapping.scroll_docs(4),
-          ['<C-p>'] = cmp.mapping(function()
-            if cmp.visible() then
-              cmp.select_prev_item({ behavior = 'insert' })
-            else
-              cmp.complete()
-            end
-          end),
-          ['<C-n>'] = cmp.mapping(function()
-            if cmp.visible() then
-              cmp.select_next_item({ behavior = 'insert' })
-            else
-              cmp.complete()
-            end
-          end),
-        }),
-        snippet = {
-          expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-          end,
-        },
-      })
-
-      -- `/` cmdline setup.
-      cmp.setup.cmdline('/', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = 'buffer' }
-        }
-      })
-
-      -- `:` cmdline setup.
-      cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = 'path' }
-        }, {
-          {
-            name = 'cmdline',
-            option = {
-              ignore_cmds = { 'Man', '!' }
-            }
-          }
-        })
-      })
-
-
-      lsp_zero.set_preferences({
-        suggest_lsp_servers = false,
-        sign_icons = {
-          error = 'E',
-          warn = 'W',
-          hint = 'H',
-          info = 'I'
-        }
-      })
-
-      vim.diagnostic.config({
-        virtual_text = true,
-      })
-
-      local function add_description(table_to_update, description)
-        table_to_update["desc"] = description
-        return table_to_update
-      end
-
-      lsp_zero.on_attach(function(client, bufnr)
-        local opts = { buffer = bufnr, remap = false }
-
-        vim.keymap.set("n", "K", function()
-          vim.lsp.buf.hover()
-        end, add_description(opts, "Lsp: Hover description")
-        )
-        vim.keymap.set("n", "<leader>vws", function()
-          vim.lsp.buf.workspace_symbol()
-        end, add_description(opts, "Lsp: Query workspace symbol")
-        )
-        vim.keymap.set("n", "<leader>vd", function()
-          vim.diagnostic.open_float()
-        end, add_description(opts, "Lsp: View diagnostics")
-        )
-        vim.keymap.set("n", "[d", function()
-          vim.diagnostic.jump({count = 1})
-        end, add_description(opts, "Lsp: Go next")
-        )
-        vim.keymap.set("n", "]d", function()
-          vim.diagnostic.jump({count = -1})
-        end, add_description(opts, "Lsp: Go prev")
-        )
-        vim.keymap.set("n", "<leader>vca", function()
-          vim.lsp.buf.code_action()
-        end, add_description(opts, "Lsp: View code actions")
-        )
-        vim.keymap.set("n", "<leader>vrr", function()
-          vim.lsp.buf.references()
-        end, add_description(opts, "Lsp: References")
-        )
-        vim.keymap.set("n", "<leader>vrn", function()
-          vim.lsp.buf.rename()
-        end, add_description(opts, "Lsp: Rename")
-        )
-        vim.keymap.set("i", "<C-h>", function()
-          vim.lsp.buf.signature_help()
-        end, add_description(opts, "Lsp: Signature help")
-        )
-      end)
-
-
-      lsp_zero.setup()
-
-      require('lspconfig.ui.windows').default_options.border = 'single'
-
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.textDocument.completion.completionItem.snippetSupport = true
-      require('lspconfig').jsonls.setup {
-        capabilities = capabilities,
-        settings = {
-          json = {
-            schemas = require('schemastore').json.schemas(),
-            validate = { enable = true },
-          },
-        },
-      }
-
-      require('lspconfig').yamlls.setup {
-        capabilities = capabilities,
-        settings = {
-          yaml = {
-            schemaStore = {
-              -- You must disable built-in schemaStore support if you want to use
-              -- this plugin and its advanced options like `ignore`.
-              enable = false,
-              -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-              url = "",
-            },
-            schemas = require('schemastore').yaml.schemas(),
-          },
-        },
-      }
-    end
-  },
   ---- diagnostics collector
   {
     {
