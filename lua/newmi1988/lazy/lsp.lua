@@ -1,4 +1,79 @@
 return {
+  -- Copilot
+  {
+    "zbirenbaum/copilot.lua",
+    dependencies = {
+      "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+    },
+    opts = {
+      panel = {
+        enabled = true,
+        auto_refresh = false,
+        keymap = {
+          jump_prev = "[[",
+          jump_next = "]]",
+          accept = "<M-l>",
+          refresh = "gr",
+          open = "<M-CR>"
+        },
+        layout = {
+          position = "bottom", -- | top | left | right | bottom |
+          ratio = 0.4
+        },
+      },
+      suggestion = {
+        enabled = true,
+        auto_trigger = false,
+        hide_during_completion = true,
+        debounce = 15,
+        trigger_on_accept = true,
+        keymap = {
+          accept = "<C-l>",
+          accept_word = false,
+          accept_line = false,
+          next = "<C-,>",
+          prev = "<C-.>",
+          dismiss = "<C-]>",
+          toggle_auto_trigger = false,
+        },
+      },
+      nes = {
+        enabled = true, -- requires copilot-lsp as a dependency
+        auto_trigger = false,
+        keymap = {
+          accept_and_goto = false,
+          accept = false,
+          dismiss = false,
+        },
+      },
+      auth_provider_url = nil, -- URL to authentication provider, if not "https://github.com/"
+      server_opts_overrides = {},
+    }
+  },
+  {
+    "copilotlsp-nvim/copilot-lsp",
+    init = function()
+      vim.g.copilot_nes_debounce = 500
+      vim.lsp.enable("copilot_ls")
+      vim.keymap.set("n", "<tab>", function()
+        local bufnr = vim.api.nvim_get_current_buf()
+        local state = vim.b[bufnr].nes_state
+        if state then
+          -- Try to jump to the start of the suggestion edit.
+          -- If already at the start, then apply the pending suggestion and jump to the end of the edit.
+          local _ = require("copilot-lsp.nes").walk_cursor_start_edit()
+              or (
+                require("copilot-lsp.nes").apply_pending_nes()
+                and require("copilot-lsp.nes").walk_cursor_end_edit()
+              )
+          return nil
+        else
+          -- Resolving the terminal's inability to distinguish between `TAB` and `<C-i>` in normal mode
+          return "<C-i>"
+        end
+      end, { desc = "Accept Copilot NES suggestion", expr = true })
+    end,
+  },
   -- Lsp
   {
     "mason-org/mason-lspconfig.nvim",
@@ -15,6 +90,7 @@ return {
     dependencies = {
       'rafamadriz/friendly-snippets',
       'L3MON4D3/LuaSnip',
+      'fang2hou/blink-copilot'
     },
 
     -- use a release tag to download pre-built binaries
@@ -43,8 +119,25 @@ return {
         preset = "enter",
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
-        ["<Tab>"] = { "accept", "fallback" },
         ["<C-c>"] = { "cancel", "fallback" },
+        ["<Tab>"] = {
+          function(cmp)
+            if vim.b[vim.api.nvim_get_current_buf()].nes_state then
+              cmp.hide()
+              return (
+                require("copilot-lsp.nes").apply_pending_nes()
+                and require("copilot-lsp.nes").walk_cursor_end_edit()
+              )
+            end
+            if cmp.snippet_active() then
+              return cmp.accept()
+            else
+              return cmp.select_and_accept()
+            end
+          end,
+          "snippet_forward",
+          "fallback",
+        },
       },
 
       appearance = {
@@ -62,7 +155,15 @@ return {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'lsp', 'copilot','path', 'snippets', 'buffer' },
+        providers = {
+          copilot = {
+            name = "copilot",
+            module = "blink-copilot",
+            score_offset = 100,
+            async = true,
+          },
+        },
       },
 
       -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
