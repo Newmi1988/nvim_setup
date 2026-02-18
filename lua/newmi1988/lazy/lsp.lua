@@ -5,6 +5,18 @@ return {
     dependencies = {
       "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
     },
+    init = function()
+      -- disable copilot on startup
+      require("copilot.command").disable()
+      -- add keybind to toggle copilot
+      vim.keymap.set('n', '<leader>cpe', function()
+        require("copilot.command").enable()
+      end, { desc = 'Copilot: enable Copilot' })
+      vim.keymap.set('n', '<leader>cpd', function()
+        require("copilot.command").disable()
+      end, { desc = 'Copilot: disable Copilot' })
+      vim.keymap.set("n", "<leader>cpt", '<cmd>Copilot toggle<CR>', { desc='Copilot: Toogle copilot'})
+    end,
     opts = {
       panel = {
         enabled = true,
@@ -31,8 +43,8 @@ return {
           accept = "<C-l>",
           accept_word = false,
           accept_line = false,
-          next = "<C-,>",
-          prev = "<C-.>",
+          next = "<C-n>",
+          prev = "<C-p>",
           dismiss = "<C-]>",
           toggle_auto_trigger = false,
         },
@@ -155,7 +167,7 @@ return {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-        default = { 'lsp', 'copilot','path', 'snippets', 'buffer' },
+        default = { 'lsp', 'copilot', 'path', 'snippets', 'buffer' },
         providers = {
           copilot = {
             name = "copilot",

@@ -29,7 +29,7 @@ return {
     config = function ()
       local builtin = require('telescope.builtin')
       -- Find files
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, {
+      vim.keymap.set('n', '<leader>fs', builtin.find_files, {
         desc = "Telescope: Find files",
       })
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, {
