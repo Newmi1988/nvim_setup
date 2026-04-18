@@ -1,25 +1,4 @@
 return {
-  {
-    'stevearc/oil.nvim',
-    opts = {},
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("oil").setup({
-        columns = {
-          "permissions",
-          "mtime",
-          "size",
-          "icon",
-        },
-        view_options = {
-          -- Show files and directories that start with "."
-          show_hidden = true,
-        },
-        vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-      })
-    end
-  },
   ---- Colored brackets
   {
     'HiPhish/rainbow-delimiters.nvim',
@@ -247,53 +226,6 @@ return {
       })
       vim.keymap.set("n", "<leader>tt", ":TodoTelescope<CR>", {
         desc = "Todo: Telescope",
-      })
-    end
-  },
-  ---- Startup dashboard
-  {
-    'glepnir/dashboard-nvim',
-    event = 'VimEnter',
-    config = function()
-      require("dashboard").setup({
-        theme = 'hyper',
-        config = {
-          week_header = {
-            enable = true,
-          },
-          shortcut = {
-            {
-              desc = '⇪ Update',
-              group = '@property',
-              action = 'Lazy update',
-              key = 'u'
-            },
-            {
-              desc = '  Files',
-              group = 'Label',
-              action = 'Telescope find_files',
-              key = 'f',
-            },
-            {
-              desc = ' Branches',
-              group = 'DiagnosticHint',
-              action = 'Telescope git_branches',
-              key = 'b',
-            },
-            {
-              desc = '󱝪 Grep',
-              group = 'Number',
-              action = 'Telescope live_grep',
-              key = 'g',
-            },
-            {
-              desc = 'Mason',
-              group = 'Number',
-              action = 'Mason',
-              key = 'm',
-            },
-          },
-        },
       })
     end
   },
