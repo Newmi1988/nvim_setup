@@ -15,7 +15,7 @@ return {
       vim.keymap.set('n', '<leader>cpd', function()
         require("copilot.command").disable()
       end, { desc = 'Copilot: disable Copilot' })
-      vim.keymap.set("n", "<leader>cpt", '<cmd>Copilot toggle<CR>', { desc='Copilot: Toogle copilot'})
+      vim.keymap.set("n", "<leader>cpt", '<cmd>Copilot toggle<CR>', { desc = 'Copilot: Toogle copilot' })
     end,
     opts = {
       panel = {
@@ -195,20 +195,20 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     config = function()
-        ensure_installed = {
-          "c",
-          "lua",
-          "rust",
-          "python",
-          "javascript",
-          "go",
-          "regex",
-          "bash",
-          "markdown",
-          "markdown_inline",
-          "vimdoc"
-        },                   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-        require('nvim-treesitter').install(ensure_installed)
+      ensure_installed = {
+            "c",
+            "lua",
+            "rust",
+            "python",
+            "javascript",
+            "go",
+            "regex",
+            "bash",
+            "markdown",
+            "markdown_inline",
+            "vimdoc"
+          }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+          require('nvim-treesitter').install(ensure_installed)
     end
   },
   'nvim-treesitter/nvim-treesitter-context',
