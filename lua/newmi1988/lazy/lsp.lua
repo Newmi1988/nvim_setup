@@ -195,21 +195,26 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     config = function()
-      ensure_installed = {
-            "c",
-            "lua",
-            "rust",
-            "python",
-            "javascript",
-            "go",
-            "regex",
-            "bash",
-            "markdown",
-            "markdown_inline",
-            "vimdoc"
-          }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-          require('nvim-treesitter').install(ensure_installed)
-    end
+      require('nvim-treesitter.configs').setup({
+        ensure_installed = {
+          "c",
+          "lua",
+          "rust",
+          "python",
+          "javascript",
+          "go",
+          "regex",
+          "bash",
+          "markdown",
+          "markdown_inline",
+          "vimdoc",
+        },
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        },
+      })
+    end,
   },
   'nvim-treesitter/nvim-treesitter-context',
   ---- diagnostics collector
