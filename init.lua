@@ -36,6 +36,14 @@ require("mason-lspconfig").setup {
 
 vim.lsp.enable(language_servers)
 
+-- Ensure any buffers opened on startup attach their LSP
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.cmd.doautoall("nvim.lsp.enable FileType")
+  end,
+  once = true,
+})
+
 -- Schema completion
 --- configure the json schemastore
 vim.lsp.config("jsonls", {

@@ -193,6 +193,7 @@ return {
   ---- general tokenizer and language parser (api for treesitter)
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'master',
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup({

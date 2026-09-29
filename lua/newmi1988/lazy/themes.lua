@@ -2,7 +2,7 @@ return {
   ---- tokio night
   'folke/tokyonight.nvim',
   -- A dark and light Neovim theme written in fennel
-  'nyoom-engineering/oxocarbon.nvim',
+  { 'nyoom-engineering/oxocarbon.nvim', build = false },
   {
     ---- catppuccin theme
     'catppuccin/nvim',

@@ -3,7 +3,6 @@ local g = vim.g
 g.mapleader = " "
 
 -- global options
-cmd 'syntax on'
 cmd 'set number'
 cmd 'set relativenumber'
 cmd 'set spell spelllang=en_us'
